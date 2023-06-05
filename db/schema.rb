@@ -10,9 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_05_121554) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_05_124205) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "drivers", force: :cascade do |t|
+    t.string "name"
+    t.string "contact_phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "item_description"
+    t.string "item_size"
+    t.string "status"
+    t.string "pickup_name"
+    t.string "pickup_address"
+    t.float "pickup_longitude"
+    t.float "pickup_latitude"
+    t.string "pickup_contact_phone"
+    t.string "pickup_additional_detail"
+    t.datetime "pickup_at"
+    t.string "dropoff_name"
+    t.string "dropoff_address"
+    t.float "dropoff_longitude"
+    t.float "dropoff_latitude"
+    t.string "dropoff_contact_phone"
+    t.string "dropoff_additional_detail"
+    t.datetime "dropoff_at"
+    t.float "price"
+    t.float "distance"
+    t.bigint "user_id", null: false
+    t.bigint "driver_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["driver_id"], name: "index_orders_on_driver_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +57,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_121554) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "orders", "drivers"
+  add_foreign_key "orders", "users"
 end
