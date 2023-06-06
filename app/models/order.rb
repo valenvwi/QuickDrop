@@ -24,11 +24,13 @@ class Order < ApplicationRecord
     errors.add(:dropoff_address, "can't be the same as pick up address") if pickup_address == dropoff_address
   end
 
+  def calculate_price
+    (distance * 5.0).round(2)
+  end
+
   def distance
     if pickup_latitude && pickup_longitude && dropoff_latitude && dropoff_longitude
-      @order.distance = Geocoder::Calculations.distance_between([pickup_latitude, pickup_longitude], [dropoff_latitude, dropoff_longitude])
-    else
-      nil
+      self.distance = Geocoder::Calculations.distance_between([pickup_latitude, pickup_longitude], [dropoff_latitude, dropoff_longitude]).round(2)
     end
   end
 
