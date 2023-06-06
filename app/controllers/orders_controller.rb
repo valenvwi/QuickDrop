@@ -7,6 +7,9 @@ class OrdersController < ApplicationController
   def show
   end
 
+  def specialshow
+  end
+
   def create
     @order = Order.new(order_params)
     @order.user = current_user
