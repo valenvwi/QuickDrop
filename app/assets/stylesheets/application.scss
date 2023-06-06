@@ -17,19 +17,28 @@
 font-family: 'Quicksand', sans-serif;
 }
 
-.a {
+a {
   text-decoration: none;
 }
 
-.h1 {
+h1 {
   font-weight: 700;
+  font-size: 48px;
 }
 
-.h2 {
+h2 {
   font-weight: 500;
+  font-size: 24px;
 }
 
-.p {
+p {
   font-weight: 300;
+  font-size: 16px;
   text-align:justify;
+}
+
+/// font size form labels ///
+
+.form-label {
+  font-size: 16px;
 }
