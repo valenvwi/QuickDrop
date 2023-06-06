@@ -1,4 +1,4 @@
-<% if @order.status.present? %>
+<% if @order.pickup_name.present? && @order.pickup_contact_phone.present? && @order.item_size.present? && @order.dropoff_name.present? && @order.dropoff_contact_phone.present?%>
   <%= render 'form' %>
 <% end %>
 <h1>Pick-up Information</h1>

@@ -4,6 +4,8 @@
 
 <%= render 'order', order: @order %>
 
+<%= link_to "Edit the order", edit_order_path(@order) %>
+
 Price: <%= @order.calculate_price %>
 
 <div class=“d-grid”>

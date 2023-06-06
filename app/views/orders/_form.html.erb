@@ -9,7 +9,9 @@
 
     </div>
     <div class=“d-grid”>
+    <% if action_name == "new"%>
       <%= f.button :submit, class: "btn btn-blue mt-2 mb-2"%>
+    <% end %>
     </div>
   </div>
 <% end %>

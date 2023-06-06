@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     @order.user = current_user
     respond_to do |format|
       if @order.save
-        format.html { redirect_to edit_order_path(@order), notice: "Flat was successfully created." }
+        format.html { redirect_to edit_order_path(@order) }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -30,8 +30,8 @@ class OrdersController < ApplicationController
   def update
     if @order.update(order_params)
       redirect_to order_path(@order)
-    else
-      render :edit
+     else
+       render :edit
     end
   end
 
