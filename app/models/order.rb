@@ -14,14 +14,19 @@ class Order < ApplicationRecord
   geocoded_by :dropoff_address, latitude: :dropoff_latitude, longitude: :dropoff_longitude
   after_validation :geocode_dropoff_location, if: :dropoff_address_changed?
 
+  validates :pickup_name, presence: true, on: :edit
+  validates :dropoff_name, presence: true, on: :edit
+  validates :item_size, presence: true, on: :edit
+  validates :pickup_contact_phone, presence: true, on: :edit
+
+
   def check_address
-   errors.add(:dropoff_address, "can't be the same as pick up address") if pickup_address == dropoff_address
+    errors.add(:dropoff_address, "can't be the same as pick up address") if pickup_address == dropoff_address
   end
 
   def calculate_price
     (distance * 5.0).round(2)
   end
-
 
   def distance
     if pickup_latitude && pickup_longitude && dropoff_latitude && dropoff_longitude

@@ -1,4 +1,6 @@
- <%= render "form", order: @order%>
+<% if @order.pickup_name.present? %>
+  <%= render 'form' %>
+<% end %>
 <h1>Pick-up Information</h1>
 <%= simple_form_for(@order) do |f| %>
   <%= f.error_notification %>
@@ -17,7 +19,7 @@
       <%= f.input :dropoff_additional_detail %>
     </div>
     <div class=“d-grid”>
-      <%= f.button :submit, class: "btn btn-blue mt-2 mb-2"%>
+      <%= f.button :submit, 'Next', class: "btn btn-blue mt-2 mb-2"%>
     </div>
   </div>
 <% end %>
