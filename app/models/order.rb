@@ -14,10 +14,12 @@ class Order < ApplicationRecord
   geocoded_by :dropoff_address, latitude: :dropoff_latitude, longitude: :dropoff_longitude
   after_validation :geocode_dropoff_location, if: :dropoff_address_changed?
 
-  validates :pickup_name, presence: true, on: :edit
-  validates :dropoff_name, presence: true, on: :edit
-  validates :item_size, presence: true, on: :edit
-  validates :pickup_contact_phone, presence: true, on: :edit
+  validates :pickup_name, presence: true, on: :update
+  validates :dropoff_name, presence: true, on: :update
+  validates :item_size, presence: true, on: :update
+  validates :dropoff_contact_phone, presence: true, on: :update
+  validates :pickup_contact_phone, presence: true, on: :update
+  validates :dropoff_contact_phone, presence: true, on: :update
 
 
   def check_address

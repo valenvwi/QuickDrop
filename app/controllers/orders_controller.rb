@@ -1,10 +1,11 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[edit update]
+  before_action :set_order, only: %i[show edit update]
   def new
     @order = Order.new
   end
 
-
+  def show
+  end
 
   def create
     @order = Order.new(order_params)
@@ -23,9 +24,9 @@ class OrdersController < ApplicationController
   def edit
   end
 
-  def updated
+  def update
     if @order.update(order_params)
-      # redirect_to @order
+      redirect_to order_path(@order)
     else
       render :edit
     end
