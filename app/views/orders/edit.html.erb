@@ -9,10 +9,12 @@
       <%= f.input :pickup_contact_phone %>
       <p>Item Size</p>
       <%= f.collection_radio_buttons :item_size, [["small", 'Small'], ["medium", 'Medium'], ["large", 'Large'] ], :first, :last %>
+      <%= f.input :pickup_additional_detail %>
     </div>
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Anything we need to know when we pick up the item?</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <div class=“form-inputs .bg-light”>
+      <%= f.input :dropoff_name %>
+      <%= f.input :dropoff_contact_phone %>
+      <%= f.input :dropoff_additional_detail %>
     </div>
     <div class=“d-grid”>
       <%= f.button :submit, class: "btn btn-blue mt-2 mb-2"%>
