@@ -1,15 +1,2 @@
 <h1> Welcome </h1>
-<%= simple_form_for(@order) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  <div class=“container” >
-    <div class=“form-inputs .bg-light”>
-      <%= f.input :pickup_address %>
-      <%= f.input :pickup_at %>
-      <%= f.input :dropoff_address %>
-    </div>
-    <div class=“d-grid”>
-      <%= f.button :submit, class: "btn btn-blue mt-2 mb-2"%>
-    </div>
-  </div>
-<% end %>
+<%= render 'form' %>

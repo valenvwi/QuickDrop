@@ -1,0 +1,34 @@
+/// all buttons ///
+
+.btn {
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 3px;
+}
+
+/// large button blue ///
+
+.btn-large , .btn-block , .btn-blue {
+  background-color: #1746A2;
+  color: #ffffff;
+}
+
+.btn-large , .btn-block , .btn-blue:hover {
+  background-color: #31549a;
+  color: #ffffff;
+}
+
+
+/// small button blue ///
+
+.btn-small ,  .btn-blue {
+  background-color: #1746A2;
+  color: #ffffff;
+}
+
+.btn-small , .btn-blue:hover {
+  background-color: #31549a;
+  color: #ffffff;
+}

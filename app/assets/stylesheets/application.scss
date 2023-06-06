@@ -10,3 +10,26 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+// Font style
+* {
+font-family: 'Quicksand', sans-serif;
+}
+
+.a {
+  text-decoration: none;
+}
+
+.h1 {
+  font-weight: 700;
+}
+
+.h2 {
+  font-weight: 500;
+}
+
+.p {
+  font-weight: 300;
+  text-align:justify;
+}
