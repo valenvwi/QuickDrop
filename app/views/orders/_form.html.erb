@@ -1,15 +1,16 @@
-<%= simple_form_for(@order) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  <div class=“container” >
-    <div class=“form-inputs .bg-light”>
-      <%= f.input :pickup_address %>
-      <%= f.input :pickup_at %>
-      <%= f.input :dropoff_address %>
 
-    </div>
-    <div class=“d-grid”>
-      <%= f.button :submit, class: "btn btn-blue mt-2 mb-2"%>
-    </div>
-  </div>
-<% end %>
+  <%= simple_form_for(@order) do |f| %>
+    <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <div class="form-inputs">
+          <%= f.input :pickup_address %>
+          <%= f.input :pickup_at, as: :datetime, html5: true, input_html: { min: Time.now.strftime('%Y-%m-%dT%H:%M') }%>
+          <br>
+          <hr>
+          <br>
+          <%= f.input :dropoff_address %>
+        </div>
+        <div class="d-grid">
+          <%= f.button :submit, class: "btn btn-large btn-blue" %>
+        </div>
+  <% end %>
