@@ -1,1 +1,7 @@
 <h1>special show</h1>
+
+Status: <% if @order.status.nil? %>
+Pending
+<% else %>
+<%= @order.status %>
+<% end %>
