@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
   belongs_to :driver, optional: true
-  
+
   validates :pickup_address, presence: true
   validates :pickup_at, presence: true
   validates :dropoff_address, presence: true
@@ -17,12 +17,15 @@ class Order < ApplicationRecord
   def check_address
    errors.add(:dropoff_address, "can't be the same as pick up address") if pickup_address == dropoff_address
   end
-  
+
+  def calculate_price
+    (distance * 5.0).round(2)
+  end
+
+
   def distance
     if pickup_latitude && pickup_longitude && dropoff_latitude && dropoff_longitude
-      @order.distance = Geocoder::Calculations.distance_between([pickup_latitude, pickup_longitude], [dropoff_latitude, dropoff_longitude])
-    else
-      nil
+      self.distance = Geocoder::Calculations.distance_between([pickup_latitude, pickup_longitude], [dropoff_latitude, dropoff_longitude]).round(2)
     end
   end
 
@@ -42,4 +45,5 @@ class Order < ApplicationRecord
       self.dropoff_latitude = geocoded.latitude
       self.dropoff_longitude = geocoded.longitude
     end
+  end
 end
