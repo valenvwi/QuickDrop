@@ -1,0 +1,17 @@
+<h1>Summary</h1>
+
+<h2>map box</h2>
+
+<%= render 'order', order: @order %>
+
+<%= link_to "Edit the order", edit_order_path(@order) %>
+
+Price: <%= @order.calculate_price %>
+
+<div class=“d-grid”>
+<%# <%= button_to 'Confirm', action: :rebuild_indexes,
+  form: {data: {turbo_confirm: 'Are you sure?'}} %>
+  <%# <%= button_to "", class: "btn btn-blue mt-2 mb-2"%>
+
+  <%= link_to "Confirm",  specialshow_order_path(@order) %>
+</div>
