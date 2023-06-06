@@ -1,0 +1,21 @@
+ <%= render "form", order: @order%>
+<h1>Pick-up Information</h1>
+<%= simple_form_for(@order) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class=“container” >
+    <div class=“form-inputs .bg-light”>
+      <%= f.input :pickup_name %>
+      <%= f.input :pickup_contact_phone %>
+      <p>Item Size</p>
+      <%= f.collection_radio_buttons :item_size, [["small", 'Small'], ["medium", 'Medium'], ["large", 'Large'] ], :first, :last %>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Anything we need to know when we pick up the item?</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <div class=“d-grid”>
+      <%= f.button :submit, class: "btn btn-blue mt-2 mb-2"%>
+    </div>
+  </div>
+<% end %>
