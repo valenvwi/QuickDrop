@@ -1,27 +1,40 @@
-<% if @order.pickup_name.present? && @order.pickup_contact_phone.present? && @order.item_size.present? && @order.dropoff_name.present? && @order.dropoff_contact_phone.present?%>
-  <%= render 'form' %>
-<% end %>
-<h1>Pick-up Information</h1>
-<%= simple_form_for(@order) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  <div class=“container” >
-    <div class=“form-inputs .bg-light”>
-      <%= f.input :pickup_name %>
-      <%= f.input :pickup_contact_phone %>
-      <p>Item Size</p>
-      <%= f.collection_radio_buttons :item_size, [["small", 'Small'], ["medium", 'Medium'], ["large", 'Large'] ], :first, :last %>
-      <%= f.input :pickup_additional_detail %>
-    </div>
-    <div class=“form-inputs .bg-light”>
-      <%= f.input :dropoff_name %>
-      <%= f.input :dropoff_contact_phone %>
-      <%= f.input :dropoff_additional_detail %>
-    </div>
-    <div class=“d-grid”>
-      <%= f.button :submit, 'Next', class: "btn btn-blue mt-2 mb-2"%>
-    </div>
+<div class="container">
+  <% if @order.pickup_name.present? && @order.pickup_contact_phone.present? && @order.item_size.present? && @order.dropoff_name.present? && @order.dropoff_contact_phone.present?%>
+    <%= render 'form' %>
+  <% end %>
+  <div>
+    <h1>Details</h1>
   </div>
-<% end %>
-<%= @order.distance %> KM.
-<%= @order.calculate_price %> CHF.
+  <div class="card">
+    <h2>Pick-up information</h2>
+    <%= simple_form_for(@order) do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <div class="form-inputs">
+          <%= f.input :pickup_name, :label => "Name of sender"%>
+          <%= f.input :pickup_contact_phone, :label => "Phone no. of sender"%>
+          <p>Item Size</p>
+          <%= f.collection_radio_buttons :item_size, [["small", 'Small'], ["medium", 'Medium'], ["large", 'Large'] ], :first, :last %>
+          <p>Anything we need to know when we pick up the item? (optional) </p>
+          <%= f.input :pickup_additional_detail, :label => "Additional information" %>
+        </div>
+    <% end %>
+   </div>
+
+  <div class="card">
+  <h2>Drop-off information</h2>
+    <%= simple_form_for(@order) do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <div class="form-inputs">
+          <%= f.input :dropoff_name, :label => "Name of recipient" %>
+          <%= f.input :dropoff_contact_phone, :label => "Phone no. of recipient" %>
+          <p>Anything we need to know when we pick up the item? (optional) </p>
+          <%= f.input :dropoff_additional_detail, :label => "Additional information" %>
+        </div>
+
+        <%= f.button :submit, 'Next', class: "btn btn-sticky btn-blue"%>
+
+    <% end %>
+  </div>
+</div>
