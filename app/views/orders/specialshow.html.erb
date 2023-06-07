@@ -1,4 +1,8 @@
 <h1>special show</h1>
+<div>
+<h2>Approximate Dropoff Time</h2>
+<h2><%= (@order.pickup_at + @order.trip_duration).strftime("%H:%M") %> </h2>
+</div>
 Status: <% if @order.status.nil? %>
 Pending
 <% else %>
@@ -24,8 +28,7 @@ Pending
   </ul>
 </div>
 <div class=“d-grid”>
-  <button type="button" class="btn btn-primary">Cancel Order</button>
+  <%= button_to "Canceled", order_cancel_path(@order), class: "btn btn-large btn-success", method: :patch %>
   <button type="button" class="btn btn-primary">My orders</button>
 
 </div>
-

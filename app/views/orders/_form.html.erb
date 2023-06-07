@@ -3,7 +3,7 @@
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
         <div class="form-inputs">
           <%= f.input :pickup_address %>
-          <%= f.input :pickup_at, as: :datetime, html5: true, input_html: { min: Time.now.strftime('%Y-%m-%dT%H:%M') }%>
+          <%= f.input :pickup_at, as: :time, html5: true, input_html: { min: Time.now.strftime('%Y-%m-%dT%H:%M') }%>
           <br>
           <hr>
           <br>
