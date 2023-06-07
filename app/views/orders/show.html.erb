@@ -1,22 +1,45 @@
-<h1>Summary</h1>
-
-<h2>map box</h2>
-
-<%= render 'order', order: @order %>
-
-<%= link_to "Edit the order", edit_order_path(@order) %>
-
-Price: <%= @order.calculate_price %>
-
-<div class=“d-grid”>
-<%# <%= button_to 'Confirm', action: :rebuild_indexes,
-  form: {data: {turbo_confirm: 'Are you sure?'}} %>
-  <%# <%= button_to "", class: "btn btn-blue mt-2 mb-2"%>
-
-  <%= link_to "Confirm",  specialshow_order_path(@order) %>
-</div>
-
-<%# <%= button_to "Accept", order_accept_path(@order), class: "btn btn-large btn-success", method: :patch %>
-<%# <%= button_to "Mark as completed", order_markascompleted_path(@order), class: "btn btn-large btn-success", method: :patch %>
-
-<%# <%= button_to "Canceled", order_cancel_path(@order), class: "btn btn-large btn-success", method: :patch %>
+<div class="container">
+  <div>
+    <div id="map">MAP</div>
+  </div>
+  <div class="text-center">
+    <h1>Summary</h1>
+  </div>
+  <div class="card">
+    <div>
+      <h3>Pick-up information:</h3>
+      <ul>
+        <li><%= @order.pickup_address%></li>
+        <li><%= @order.pickup_at %></li>
+        <li><%= @order.pickup_additional_detail %></li>
+        <li><%= @order.pickup_name %></li>
+        <li><%= @order.pickup_contact_phone %></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Drop-off information:</h3>
+      <ul>
+        <li><%= @order.dropoff_address%></li>
+        <li><%= @order.dropoff_at %></li>
+        <li><%= @order.dropoff_additional_detail %></li>
+        <li><%= @order.dropoff_name %></li>
+        <li><%= @order.dropoff_contact_phone %></li>
+      </ul>
+    </div>
+    <%# Edit Button %>
+    <div class="position-absolute top-0 end-0">
+      <%= link_to edit_order_path(@order), class: "btn", style: "background-color: transparent;" do %>
+        <i class="fa-regular fa-pen-to-square"></i>
+      <% end %>
+    </div>
+    <%# Submit Button & Price %>
+    <%# Need to fix the button size %>
+    <div>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <%= link_to specialshow_order_path(@order), class: "btn btn-large btn-blue d-flex justify-content-between" do %>
+          <span class="text-left">Submit</span>
+          <span class="text-right">Price: <%= @order.calculate_price %></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
