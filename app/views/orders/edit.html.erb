@@ -14,18 +14,24 @@
           <%= f.input :pickup_name, :label => "Name of sender"%>
           <%= f.input :pickup_contact_phone, :label => "Phone no. of sender"%>
           <p>Item Size</p>
-          <%= f.collection_radio_buttons :item_size, [["small", 'Small'], ["medium", 'Medium'], ["large", 'Large'] ], :first, :last %>
+          <%= f.input :item_size,
+              as: :radio_buttons,
+              collection_wrapper_tag: 'div',
+              collection_wrapper_class: 'category-wrapper',
+              item_wrapper_class: 'category-item',
+              input_html: {class: 'category-selector'},
+              collection: Order::SIZES %>
           <p>Anything we need to know when we pick up the item? (optional) </p>
           <%= f.input :pickup_additional_detail, :label => "Additional information" %>
         </div>
-    <% end %>
+    <%# <% end %>
    </div>
 
   <div class="card">
   <h2>Drop-off information</h2>
-    <%= simple_form_for(@order) do |f| %>
-      <%= f.error_notification %>
-      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <%# <%= simple_form_for(@order) do |f| %>
+      <%# <%= f.error_notification %>
+      <%# <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
         <div class="form-inputs">
           <%= f.input :dropoff_name, :label => "Name of recipient" %>
           <%= f.input :dropoff_contact_phone, :label => "Phone no. of recipient" %>
