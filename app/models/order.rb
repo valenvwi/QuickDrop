@@ -36,6 +36,12 @@ class Order < ApplicationRecord
     end
   end
 
+  def trip_duration
+    speed = 30.0
+    duration = distance / speed
+    ActiveSupport::Duration.build(duration.hours.round)
+  end
+
   private
 
   def geocode_pickup_location

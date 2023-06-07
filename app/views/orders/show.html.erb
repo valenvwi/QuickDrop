@@ -1,6 +1,13 @@
 <div class="container">
-  <div>
-    <div id="map">MAP</div>
+  <div style="width: 100%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      <% if  @order.trip_duration.in_hours.floor <= 1 %>
+        duration: <%= pluralize @order.trip_duration.in_minutes.ceil, "Minute" %> 
+      <% else %>
+        duration:<%= pluralize @order.trip_duration.in_hours.floor, "Hour" %> <%= pluralize (@order.trip_duration.in_minutes.ceil - @order.trip_duration.in_hours.floor * 60), "Minute" %>
+      <% end %>
   </div>
   <div class="text-center">
     <h1>Summary</h1>
@@ -41,5 +48,7 @@
           <span class="text-right">Price: <%= @order.calculate_price %></span>
         <% end %>
       </div>
-    </div>
+      <%# <%= button_to "Accept", order_accept_path(@order), class: "btn btn-large btn-success", method: :patch %>
+      <%# <%= button_to "Mark as completed", order_markascompleted_path(@order), class: "btn btn-large btn-success", method: :patch %>
+      <%# <%= button_to "Canceled", order_cancel_path(@order), class: "btn btn-large btn-success", method: :patch %>
   </div>
