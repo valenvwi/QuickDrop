@@ -1,5 +1,9 @@
 <h1>special show</h1>
-
+Status: <% if @order.status.nil? %>
+Pending
+<% else %>
+<%= @order.status %>
+<% end %>
 <label for="disabledTextInput" class="form-label">Driver</label>
 <div class="card-body">
   <%= @order.driver %>
@@ -24,3 +28,4 @@
   <button type="button" class="btn btn-primary">My orders</button>
 
 </div>
+
