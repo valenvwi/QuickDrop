@@ -14,7 +14,23 @@ class OrderPolicy < ApplicationPolicy
     true
   end
 
+  def specialshow?
+    true
+  end
+
   def create?
+    true
+  end
+
+  def accept?
+    true
+  end
+
+  def markascompleted?
+    true
+  end
+
+  def cancel?
     true
   end
 

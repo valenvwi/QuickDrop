@@ -16,7 +16,7 @@ Price: <%= @order.calculate_price %>
   <%= link_to "Confirm",  specialshow_order_path(@order) %>
 </div>
 
-<%= button_to "Accept", order_accept_path(@order), class: "btn btn-large btn-success", method: :patch %>
-<%= button_to "Mark as completed", order_markascompleted_path(@order), class: "btn btn-large btn-success", method: :patch %>
+<%# <%= button_to "Accept", order_accept_path(@order), class: "btn btn-large btn-success", method: :patch %>
+<%# <%= button_to "Mark as completed", order_markascompleted_path(@order), class: "btn btn-large btn-success", method: :patch %>
 
-<%= button_to "Canceled", order_cancel_path(@order), class: "btn btn-large btn-success", method: :patch %>
+<%# <%= button_to "Canceled", order_cancel_path(@order), class: "btn btn-large btn-success", method: :patch %>
