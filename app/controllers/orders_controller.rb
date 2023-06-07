@@ -1,18 +1,27 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[specialshow show edit update]
+  before_action :set_order, only: %i[specialshow show edit update destroy]
+
+  def index
+    @orders = policy_scope(Order)
+  end
+
   def new
     @order = Order.new
+    authorize @order
   end
 
   def show
   end
 
+
   def specialshow
   end
+
 
   def create
     @order = Order.new(order_params)
     @order.user = current_user
+    authorize @order
     respond_to do |format|
       if @order.save
         format.html { redirect_to edit_order_path(@order) }
@@ -29,17 +38,20 @@ class OrdersController < ApplicationController
 
   def update
     if @order.update(order_params)
-      redirect_to order_path(@order)
-     else
-       render :edit
+      redirect_to order_path(@order)   # redirect_to @order
+    else
+      render :edit
+
     end
   end
 
 
   private
 
+
   def set_order
     @order = Order.find(params[:id])
+    authorize @order
   end
 
   def order_params
