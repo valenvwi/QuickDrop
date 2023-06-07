@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
-  before_action :set_order, only: %i[show specialshow edit update
-
+  before_action :set_order, only: %i[show specialshow edit update]
+  before_action :set_submitted_order, only: %i[accept markascompleted cancel]
   def index
     @orders = policy_scope(Order)
   end
@@ -46,21 +46,18 @@ class OrdersController < ApplicationController
   end
 
   def accept
-    @order = Order.find(params[:order_id])
     @order.update(status: "Accepted")
     redirect_to order_path(@order)
     # redirect_to orders_path, notice: "order accepted!"
   end
 
   def markascompleted
-    @order = Order.find(params[:order_id])
     @order.update(status: "Completed")
     redirect_to order_path(@order)
     # redirect_to orders_path, notice: "order completedd!"
   end
 
   def cancel
-    @order = Order.find(params[:order_id])
     @order.update(status: "Cancaled")
     redirect_to order_path(@order)
     # redirect_to orders_path, notice: "order canceled!"
@@ -71,6 +68,11 @@ class OrdersController < ApplicationController
 
   def set_order
     @order = Order.find(params[:id])
+    authorize @order
+  end
+
+  def set_submitted_order
+    @order = Order.find(params[:order_id])
     authorize @order
   end
 
