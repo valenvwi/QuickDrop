@@ -8,31 +8,36 @@
   margin: 3px;
 }
 
-/// large button blue ///
 
-.btn-large , .btn-blue {
+.btn-sticky {
+  position: sticky;
+  bottom: 30px;
+  margin: 0px;
+  width: 100%;
+}
+
+/// large button blue sticky ///
+
+.btn-blue {
   background-color: #1746A2;
   color: #ffffff;
   font-style: bold;
 }
-
-.btn-large , .btn-blue:hover {
+.btn-blue:hover {
   background-color: #31549a;
-  color: #ffffff;
-  font-style: bold;
 }
 
 
 /// small button blue ///
 
-.btn-small , .btn-blue {
-  background-color: #1746A2;
-  color: #ffffff;
-  font-style: bold;
-}
+// .btn-small , .btn-blue {
+//   background-color: #1746A2;
+//   color: #ffffff;
+//   font-style: bold;
+// }
 
-.btn-small , .btn-blue:hover {
-  background-color: #31549a;
-  color: #ffffff;
-  font-style: bold;
-}
+// .btn-small , .btn-blue:hover {
+//   background-color: #31549a;
+//   color: #ffffff;
+//   font-style: bold;
+// }
