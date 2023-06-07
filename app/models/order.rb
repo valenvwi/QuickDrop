@@ -21,6 +21,7 @@ class Order < ApplicationRecord
   validates :pickup_contact_phone, presence: true, on: :update
   validates :dropoff_contact_phone, presence: true, on: :update
 
+  SIZES = ['Small', 'Medium', 'Large']
 
   def check_address
     errors.add(:dropoff_address, "can't be the same as pick up address") if pickup_address == dropoff_address
