@@ -1,7 +1,31 @@
 <h1>special show</h1>
-
 Status: <% if @order.status.nil? %>
 Pending
 <% else %>
 <%= @order.status %>
 <% end %>
+<label for="disabledTextInput" class="form-label">Driver</label>
+<div class="card-body">
+  <%= @order.driver %>
+</div>
+<button type="button" class="btn btn-primary">Call driver</button>
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Drop-off Location
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%= @order.dropoff_address %></li>
+  </ul>
+  <div class="card-header">
+    Price
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%= @order.calculate_price %></li>
+  </ul>
+</div>
+<div class=“d-grid”>
+  <button type="button" class="btn btn-primary">Cancel Order</button>
+  <button type="button" class="btn btn-primary">My orders</button>
+
+</div>
+
