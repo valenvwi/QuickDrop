@@ -8,24 +8,23 @@
   <div class="card">
     <h2>Pick-up information</h2>
     <%= simple_form_for(@order) do |f| %>
-      <%= f.error_notification %>
+        <%# <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
         <div class="form-inputs">
           <%= f.input :pickup_name, :label => "Name of sender"%>
           <%= f.input :pickup_contact_phone, :label => "Phone no. of sender"%>
           <p>Item Size</p>
           <%= f.collection_radio_buttons :item_size, [["small", 'Small'], ["medium", 'Medium'], ["large", 'Large'] ], :first, :last %>
+            <% if @order.errors["item_size"].present? %>
+              <br><span class="text-danger" >Please choose the size</span>
+            <% end %>
           <p>Anything we need to know when we pick up the item? (optional) </p>
           <%= f.input :pickup_additional_detail, :label => "Additional information" %>
         </div>
-    <% end %>
    </div>
 
   <div class="card">
   <h2>Drop-off information</h2>
-    <%= simple_form_for(@order) do |f| %>
-      <%= f.error_notification %>
-      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
         <div class="form-inputs">
           <%= f.input :dropoff_name, :label => "Name of recipient" %>
           <%= f.input :dropoff_contact_phone, :label => "Phone no. of recipient" %>
