@@ -12,6 +12,17 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @marker1 =
+      {
+        lat: @order.pickup_latitude,
+        lng: @order.pickup_longitude
+      }
+    @marker2 =
+      {
+        lat: @order.dropoff_latitude,
+        lng: @order.dropoff_longitude
+      }
+    @markers = [@marker1, @marker2]
   end
 
 
