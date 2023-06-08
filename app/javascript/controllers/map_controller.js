@@ -19,7 +19,7 @@ export default class extends Controller {
     })
 
     this.#addMarkersToMap()
-    this.#calculateTravelTime()
+    // this.#calculateTravelTime()
     console.log(this.markersValue)
   }
 
@@ -31,7 +31,7 @@ export default class extends Controller {
     })
   }
 }
-
+////////////////////////////////////////////////
   // connect() {
   //   mapboxgl.accessToken = this.apiKeyValue
   //   let coords = [ this.markerValue.lng, this.markerValue.lat ]

@@ -12,7 +12,7 @@
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
         <div class="form-inputs">
           <%= f.input :pickup_name, :label => "Name of sender"%>
-          <%= f.input :pickup_contact_phone, :label => "Phone no. of sender"%>
+          <%= f.input :pickup_contact_phone, :label => "Phone No. of sender"%>
           <p>Item Size</p>
           <%= f.input :item_size,
               as: :radio_buttons,
