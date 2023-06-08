@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         format.html { redirect_to edit_order_path(@order) }
-        format.json { render :show, status: :created, location: @order }
+        format.json { render :edit, status: :created, location: @order }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -49,10 +49,14 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if @order.update(order_params)
-      redirect_to order_path(@order)   # redirect_to @order
-    else
-      render :edit
+    respond_to do |format|
+      if @order.update(order_params)
+        format.html { redirect_to order_path(@order) }
+        format.json { render :show}
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
     end
   end
 
