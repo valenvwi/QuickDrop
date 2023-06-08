@@ -1,54 +1,61 @@
 <div class="container">
-  <div style="width: 100%; height: 600px;"
+  <div id= "map"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-      <% if  @order.trip_duration.in_hours.floor <= 1 %>
-        duration: <%= pluralize @order.trip_duration.in_minutes.ceil, "Minute" %>
-      <% else %>
-        duration:<%= pluralize @order.trip_duration.in_hours.floor, "Hour" %> <%= pluralize (@order.trip_duration.in_minutes.ceil - @order.trip_duration.in_hours.floor * 60), "Minute" %>
-      <% end %>
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
   </div>
-  <div class="text-center">
+  <div class="container">
     <h1>Summary</h1>
+      <span class="badge rounded-pill">
+        <% if  @order.trip_duration.in_hours.floor <= 1 %>
+            Your order will take approximately:
+            <br>
+            <h3 class ="pill-text"><%= pluralize @order.trip_duration.in_minutes.ceil, "Minute" %></h3>
+        <% else %>
+            Your order will take approximately:
+            <br>
+            <h3 class ="pill-text"><%= pluralize @order.trip_duration.in_hours.floor, "Hour" %> <%= pluralize (@order.trip_duration.in_minutes.ceil - @order.trip_duration.in_hours.floor * 60), "Minute" %></h3>
+        <% end %>
+      </span>
   </div>
-  <div class="card">l
-    <div>
-      <h3>Pick-up information:</h3>
-      <ul>
-        <li><%= @order.pickup_address%></li>
-        <li><%= @order.pickup_at %></li>
-        <li><%= @order.pickup_additional_detail %></li>
-        <li><%= @order.pickup_name %></li>
-        <li><%= @order.pickup_contact_phone %></li>
-      </ul>
-    </div>
-    <div>
-      <h3>Drop-off information:</h3>
-      <ul>
-        <li><%= @order.dropoff_address%></li>
-        <li><%= @order.dropoff_at %></li>
-        <li><%= @order.dropoff_additional_detail %></li>
-        <li><%= @order.dropoff_name %></li>
-        <li><%= @order.dropoff_contact_phone %></li>
-      </ul>
-    </div>
-    <%# Edit Button %>
-    <div class="position-absolute top-0 end-0">
-      <%= link_to edit_order_path(@order), class: "btn", style: "background-color: transparent;" do %>
-        <i class="fa-regular fa-pen-to-square"></i>
-      <% end %>
-    </div>
-    <%# Submit Button & Price %>
-    <%# Need to fix the button size %>
-    <div>
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <%= link_to specialshow_order_path(@order), class: "btn btn-large btn-blue d-flex justify-content-between" do %>
-          <span class="text-left">Submit</span>
-          <span class="text-right">Price: <%= @order.price %></span>
+  <div class="card">
+    <div class="card-flex">
+      <i class="fa-solid fa-location-dot fa-2xl" style="color: #ff731d;"></i>
+      <h2>Pick-up information:</h2>
+      <div>
+        <%= link_to edit_order_path(@order) do %>
+          <i class="fa-solid fa-pen fa-lg" style="color: #1746a2;"></i>
         <% end %>
       </div>
-      <%# <%= button_to "Accept", order_accept_path(@order), class: "btn btn-large btn-success", method: :patch %>
-      <%# <%= button_to "Mark as completed", order_markascompleted_path(@order), class: "btn btn-large btn-success", method: :patch %>
-      <%# <%= button_to "Canceled", order_cancel_path(@order), class: "btn btn-large btn-success", method: :patch %>
-  </div>
+    </div>
+    <div class="card-summary">
+      <h5>Pick-up address</h5>
+      <p><%= @order.pickup_address%></p>
+      <h5>Pick-up time</h5>
+      <p><%= @order.pickup_at %></p>
+      <h5>Name & phone No. of sender</h5>
+      <p><%= @order.pickup_name %></p>
+      <p><%= @order.pickup_contact_phone %></p>
+      <h5>Additional information</h5>
+      <p><%= @order.pickup_additional_detail %></p>
+    </div>
+    <hr>
+    <div class="card-flex">
+      <i class="fa-solid fa-location-dot fa-2xl" style="color: #ff731d;"></i>
+      <h2>Drop-off information:</h2>
+      <div></div>
+    </div>
+    <div class="card-summary">
+      <h5>Pick-up address</h5>
+      <p><%= @order.dropoff_address%></p>
+      <h5>Pick-up time</h5>
+      <p><%= @order.dropoff_at %></p>
+      <h5>Name & phone No. of sender</h5>
+      <p><%= @order.dropoff_name %></p>
+      <p><%= @order.dropoff_contact_phone  %></p>
+      <h5>Additional information</h5>
+      <p><%= @order.dropoff_additional_detail %></p>
+    </div>
+  <input class="btn btn-sticky btn-blue" type="submit" value="Submit order:    <%= @order.calculate_price %> CHF">
+</div>
+

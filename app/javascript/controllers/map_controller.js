@@ -30,7 +30,7 @@ export default class extends Controller {
     })
   }
 }
-
+////////////////////////////////////////////////
   // connect() {
   //   mapboxgl.accessToken = this.apiKeyValue
   //   let coords = [ this.markerValue.lng, this.markerValue.lat ]

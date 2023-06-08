@@ -5,6 +5,13 @@
   border-radius: 15px;
   padding: 12px;
   margin: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  text-align: left;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+//// card flexbox ////
+.card-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
