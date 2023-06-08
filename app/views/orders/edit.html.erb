@@ -20,9 +20,6 @@
               item_wrapper_class: 'category-item',
               input_html: {class: 'category-selector'},
               collection: Order::SIZES %>
-            <%if @order.errors["item_size"].present? %>
-              <br><span class="text-danger" >Please choose the size</span>
-            <% end %>
           <p>Anything we need to know when we pick up the item? (optional) </p>
           <%= f.input :pickup_additional_detail, :label => "Additional information" %>
         </div>
