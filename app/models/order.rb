@@ -21,6 +21,9 @@ class Order < ApplicationRecord
   validates :pickup_contact_phone, presence: true, on: :update
   validates :dropoff_contact_phone, presence: true, on: :update
 
+  before_create :calculate_distance, :calculate_price, :trip_duration, :dropoff_time
+
+
   SIZES = ['Small', 'Medium', 'Large']
 
   def check_address
@@ -28,10 +31,10 @@ class Order < ApplicationRecord
   end
 
   def calculate_price
-    (distance * 5.0).round(2)
+    self.price = (distance * 5.0).round(2)
   end
 
-  def distance
+  def calculate_distance
     if pickup_latitude && pickup_longitude && dropoff_latitude && dropoff_longitude
       self.distance = Geocoder::Calculations.distance_between([pickup_latitude, pickup_longitude], [dropoff_latitude, dropoff_longitude]).round(2)
     end
@@ -40,7 +43,12 @@ class Order < ApplicationRecord
   def trip_duration
     speed = 30.0
     duration = distance / speed
-    ActiveSupport::Duration.build(duration.hours.round)
+    self.duration = ActiveSupport::Duration.build(duration.hours.round)
+  end
+
+  def dropoff_time
+    self.dropoff_at = (pickup_at + duration)
+
   end
 
   private

@@ -1,7 +1,7 @@
 <h1>special show</h1>
 <div>
 <h2>Approximate Dropoff Time</h2>
-<h2><%= (@order.pickup_at + @order.trip_duration).strftime("%H:%M") %> </h2>
+<h2><%= @order.dropoff_at.strftime("%H:%M") %> </h2>
 </div>
 Status: <% if @order.status.nil? %>
 Pending
@@ -24,7 +24,7 @@ Pending
     Price
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%= @order.calculate_price %></li>
+    <li class="list-group-item"><%= @order.price %></li>
   </ul>
 </div>
 <div class=“d-grid”>
@@ -33,5 +33,3 @@ Pending
 
 </div>
 
-<%# <%= @order.distance KM. %>
-<%# <%= @order.calculate_price CHF. %>

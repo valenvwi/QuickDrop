@@ -1,9 +1,11 @@
 class OrdersController < ApplicationController
 
-  before_action :set_order, only: %i[show specialshow edit update]
-  before_action :set_submitted_order, only: %i[accept markascompleted cancel]
+  before_action :set_order, only: %i[ show specialshow edit update ]
+  before_action :set_submitted_order, only: %i[ accept markascompleted cancel]
+
   def index
-    @orders = policy_scope(Order)
+    # @order.user = current_user
+    @orders = policy_scope(Order).where(user_id: current_user)
   end
 
   def new
@@ -92,7 +94,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:item_description, :item_size, :status, :pickup_name, :pickup_address, :pickup_contact_phone, :pickup_additional_detail, :pickup_at, :dropoff_name, :dropoff_address, :dropoff_contact_phone, :dropoff_additional_detail, :dropoff_at, :price, :distance )
+    params.require(:order).permit(:item_description, :item_size, :status, :pickup_name, :pickup_address, :pickup_contact_phone, :pickup_additional_detail, :pickup_at, :dropoff_name, :dropoff_address, :dropoff_contact_phone, :dropoff_additional_detail, :dropoff_at )
   end
 
 

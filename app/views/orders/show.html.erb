@@ -4,7 +4,7 @@
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
       <% if  @order.trip_duration.in_hours.floor <= 1 %>
-        duration: <%= pluralize @order.trip_duration.in_minutes.ceil, "Minute" %> 
+        duration: <%= pluralize @order.trip_duration.in_minutes.ceil, "Minute" %>
       <% else %>
         duration:<%= pluralize @order.trip_duration.in_hours.floor, "Hour" %> <%= pluralize (@order.trip_duration.in_minutes.ceil - @order.trip_duration.in_hours.floor * 60), "Minute" %>
       <% end %>
@@ -12,7 +12,7 @@
   <div class="text-center">
     <h1>Summary</h1>
   </div>
-  <div class="card">
+  <div class="card">l
     <div>
       <h3>Pick-up information:</h3>
       <ul>
@@ -45,7 +45,7 @@
       <div class="btn-group" role="group" aria-label="Basic example">
         <%= link_to specialshow_order_path(@order), class: "btn btn-large btn-blue d-flex justify-content-between" do %>
           <span class="text-left">Submit</span>
-          <span class="text-right">Price: <%= @order.calculate_price %></span>
+          <span class="text-right">Price: <%= @order.price %></span>
         <% end %>
       </div>
       <%# <%= button_to "Accept", order_accept_path(@order), class: "btn btn-large btn-success", method: :patch %>
