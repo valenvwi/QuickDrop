@@ -48,7 +48,6 @@ class Order < ApplicationRecord
 
   def dropoff_time
     self.dropoff_at = (pickup_at + duration)
-
   end
 
   private
