@@ -7,7 +7,7 @@
         <h5 class="card-title"><%= order.status %></h5>
           <br />
             <p class="card-text">
-            <%= order.pickup_at %>
+            <%= order.pickup_at.strftime("%Y-%m-%d %H:%M") %>
             </p>
               <br />
                 <strong><%= order.price %></strong> CHF</li>

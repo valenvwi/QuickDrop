@@ -19,7 +19,6 @@ class Order < ApplicationRecord
   validates :item_size, presence: true, on: :update
   validates :dropoff_contact_phone, presence: true, on: :update
   validates :pickup_contact_phone, presence: true, on: :update
-  validates :dropoff_contact_phone, presence: true, on: :update
 
   before_create :calculate_distance, :calculate_price, :trip_duration, :dropoff_time
 

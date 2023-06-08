@@ -1,18 +1,18 @@
-<h1>special show</h1>
 <div>
-<h2>Approximate Dropoff Time</h2>
-<h2><%= @order.dropoff_at.strftime("%H:%M") %> </h2>
+<h2>We found a driver for your delivery</h2>
+<h3>approximate drop-off time</h3>
+<h2><%= @order.dropoff_at.strftime("%Y-%m-%d %H:%M") %> </h2>
 </div>
-Status: <% if @order.status.nil? %>
-Pending
-<% else %>
-<%= @order.status %>
-<% end %>
+<%# Status: <% if @order.status.nil? %>
+<%# Confirmed %>
+<%# <% else %>
+<%# <%= @order.status %>
+<%# <% end %>
 <label for="disabledTextInput" class="form-label">Driver</label>
 <div class="card-body">
   <%= @order.driver %>
 </div>
-<button type="button" class="btn btn-primary">Call driver</button>
+<button type="button" class="btn btn-blue">Contact Driver</button>
 <div class="card" style="width: 18rem;">
   <div class="card-header">
     Drop-off Location
@@ -28,8 +28,6 @@ Pending
   </ul>
 </div>
 <div class=“d-grid”>
-  <%= button_to "Canceled", order_cancel_path(@order), class: "btn btn-large btn-success", method: :patch %>
-  <button type="button" class="btn btn-primary">My orders</button>
+  <%= button_to "Cancel Delivery", order_cancel_path(@order), class:"btn btn-sticky btn-blue", method: :patch %>
 
 </div>
-
