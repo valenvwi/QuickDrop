@@ -19,7 +19,6 @@ export default class extends Controller {
     })
 
     this.#addMarkersToMap()
-    // this.#calculateTravelTime()
     console.log(this.markersValue)
   }
 

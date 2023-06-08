@@ -1,9 +1,11 @@
 class OrdersController < ApplicationController
 
-  before_action :set_order, only: %i[show specialshow edit update]
-  before_action :set_submitted_order, only: %i[accept markascompleted cancel]
+  before_action :set_order, only: %i[ show specialshow edit update ]
+  before_action :set_submitted_order, only: %i[ accept markascompleted cancel]
+
   def index
-    @orders = policy_scope(Order)
+    # @order.user = current_user
+    @orders = policy_scope(Order).where(user_id: current_user)
   end
 
   def new
@@ -37,7 +39,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         format.html { redirect_to edit_order_path(@order) }
-        format.json { render :show, status: :created, location: @order }
+        format.json { render :edit, status: :created, location: @order }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -49,10 +51,14 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if @order.update(order_params)
-      redirect_to order_path(@order)   # redirect_to @order
-    else
-      render :edit
+    respond_to do |format|
+      if @order.update(order_params)
+        format.html { redirect_to order_path(@order) }
+        format.json { render :show}
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -88,7 +94,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:item_description, :item_size, :status, :pickup_name, :pickup_address, :pickup_contact_phone, :pickup_additional_detail, :pickup_at, :dropoff_name, :dropoff_address, :dropoff_contact_phone, :dropoff_additional_detail, :dropoff_at, :price, :distance )
+    params.require(:order).permit(:item_description, :item_size, :status, :pickup_name, :pickup_address, :pickup_contact_phone, :pickup_additional_detail, :pickup_at, :dropoff_name, :dropoff_address, :dropoff_contact_phone, :dropoff_additional_detail, :dropoff_at )
   end
 
 
