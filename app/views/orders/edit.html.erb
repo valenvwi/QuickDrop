@@ -33,7 +33,6 @@
         <% if @order.pickup_name.present? && @order.pickup_contact_phone.present? && @order.item_size.present? && @order.dropoff_name.present? && @order.dropoff_contact_phone.present? %>
           <%= f.input :dropoff_address, :label => "Dropoff address"%>
         <% end %>
-        <%= f.input :dropoff_address, :label => "Dropoff address"%>
         <%= f.input :dropoff_name, :label => "Name of recipient" %>
         <%= f.input :dropoff_contact_phone, :label => "Phone no. of recipient" %>
         <p>Anything we need to know when we pick up the item? (optional) </p>

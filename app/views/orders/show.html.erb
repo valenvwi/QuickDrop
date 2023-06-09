@@ -2,8 +2,7 @@
   <div id= "map"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
-  </div>
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>"></div>
   <div class="container">
     <h1>Summary</h1>
       <span class="badge rounded-pill">
@@ -32,7 +31,7 @@
       <h5>Pick-up address</h5>
       <p><%= @order.pickup_address%></p>
       <h5>Pick-up time</h5>
-      <p><%= @order.pickup_at %></p>
+      <p><%= @order.pickup_at.strftime('%Y-%m-%dT%H:%M') %></p>
       <h5>Name & phone No. of sender</h5>
       <p><%= @order.pickup_name %></p>
       <p><%= @order.pickup_contact_phone %></p>
@@ -49,12 +48,14 @@
       <h5>Pick-up address</h5>
       <p><%= @order.dropoff_address%></p>
       <h5>Pick-up time</h5>
-      <p><%= @order.dropoff_at %></p>
+      <p><%= @order.dropoff_at.strftime('%Y-%m-%d %H:%M') %></p>
       <h5>Name & phone No. of sender</h5>
       <p><%= @order.dropoff_name %></p>
       <p><%= @order.dropoff_contact_phone  %></p>
       <h5>Additional information</h5>
       <p><%= @order.dropoff_additional_detail %></p>
     </div>
-  <input class="btn btn-sticky btn-blue" type="submit" value="Submit order:    <%= @order.calculate_price %> CHF">
+    <%= link_to specialshow_order_path(@order) do %>
+      <input class="btn btn-sticky btn-blue" type="submit" value="Submit order:    <%= @order.calculate_price %> CHF">
+    <% end %>
 </div>
