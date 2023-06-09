@@ -16,17 +16,17 @@
         <div class="step <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'specialshow' %>">4</div>
       </div>
     </div>
-    <%# end here %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <%# Drop Down %>
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="bi bi-box-seam" style="font-size: 2rem;"></i>
+    <%# END HERE %>
+    <%# Drop Down %>
+    <a href="#" class="nav-link" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="navbar-toggler bi bi-box-seam" style="font-size: 2rem;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <%# <span class="navbar-toggler-icon"></span> %>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <% if user_signed_in? %>
+            <%# Drop Down %>
+            <li class="nav-item dropdown">
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "New Order", root_path, class: "dropdown-item" %>
