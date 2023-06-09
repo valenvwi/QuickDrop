@@ -1,4 +1,4 @@
-  <%= simple_form_for @order, html: { "data-turbo-frame": false } do |f| %>
+  <%= simple_form_for @order, html: { "data-turbo-frame": false, turbo: false } do |f| %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
         <div class="form-inputs">
           <%= f.input :pickup_address %>
