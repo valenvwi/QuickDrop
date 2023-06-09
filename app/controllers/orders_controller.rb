@@ -77,7 +77,6 @@ class OrdersController < ApplicationController
   def cancel
     @order.update(status: "Cancelled")
     redirect_to orders_path
-    # redirect_to orders_path, notice: "order cancelled!"
   end
 
   private
