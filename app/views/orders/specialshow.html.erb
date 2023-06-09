@@ -8,11 +8,12 @@
 <%# <% else %>
 <%# <%= @order.status %>
 <%# <% end %>
-<label for="disabledTextInput" class="form-label">Driver</label>
 <div class="card-body">
   <%= @order.driver %>
 </div>
-<button type="button" class="btn btn-blue">Contact Driver</button>
+<button type="button" class="btn btn-secondary"  data-controller="popover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content = "0982309622" >
+  Contact Driver
+</button>
 <div class="card" style="width: 18rem;">
   <div class="card-header">
     Drop-off Location
@@ -28,6 +29,6 @@
   </ul>
 </div>
 <div class=“d-grid”>
-  <%= button_to "Cancel Delivery", order_cancel_path(@order), class:"btn btn-sticky btn-blue", method: :patch %>
-
+  <%= button_to "Cancel Delivery", root_path , class:"btn btn-sticky btn-blue", method: :get %>
+  <%= button_to "All orders", orders_path(@orders), class:"btn btn-sticky btn-blue", method: :get %>
 </div>

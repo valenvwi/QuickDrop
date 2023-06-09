@@ -45,11 +45,11 @@
       <div></div>
     </div>
     <div class="card-summary">
-      <h5>Pick-up address</h5>
+      <h5>Drop-off address</h5>
       <p><%= @order.dropoff_address%></p>
-      <h5>Pick-up time</h5>
+      <h5>Drop-off time</h5>
       <p><%= @order.dropoff_at.strftime('%Y-%m-%d %H:%M') %></p>
-      <h5>Name & phone No. of sender</h5>
+      <h5>Name & phone No. of receiver</h5>
       <p><%= @order.dropoff_name %></p>
       <p><%= @order.dropoff_contact_phone  %></p>
       <h5>Additional information</h5>
