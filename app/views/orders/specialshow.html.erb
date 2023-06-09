@@ -1,4 +1,4 @@
- <div class="background-container">
+<div class="background-container">
   <div class= "one">
     <div class="banner">
       <div class="circle">
@@ -8,7 +8,6 @@
       </div>
     </div>
   </div>
-  <%# <div> %>
     <div class="card">
       <h5 class="card-header">Status: <% if @order.status.nil? %>
         Confirmed
@@ -29,6 +28,5 @@
         </div>
       </div>
     </div>
-  <%# </div> %>
   <%= button_to "All orders", orders_path(@orders), class:"btn btn-sticky btn-blue", method: :get %>
 </div>

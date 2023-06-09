@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 
   def index
     # @order.user = current_user
-    @orders = policy_scope(Order).where(user_id: current_user)
+    @orders = policy_scope(Order).where(user_id: current_user).order(created_at: :desc)
   end
 
   def new
