@@ -27,6 +27,22 @@
   background-color: #31549a;
 }
 
+/////// orange border button //////////
+
+.btn-border-orange {
+  background-color: transparent;
+  border: #FF731D;
+  color: darkgray;
+}
+
+.btn-border-orange:hover {
+  background-color:#f8ba93 ;
+}
+
+/////////// button width 100% //////
+.btn-full-width {
+  width: 100%;
+}
 
 /// small button blue ///
 
