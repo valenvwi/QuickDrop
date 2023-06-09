@@ -64,20 +64,20 @@ class OrdersController < ApplicationController
 
   def accept
     @order.update(status: "Accepted")
-    redirect_to order_path(@order)
+    redirect_to orders_path
     # redirect_to orders_path, notice: "order accepted!"
   end
 
   def markascompleted
     @order.update(status: "Completed")
-    redirect_to order_path(@order)
+    redirect_to orders_path
     # redirect_to orders_path, notice: "order completedd!"
   end
 
   def cancel
-    @order.update(status: "Cancaled")
-    redirect_to order_path(@order)
-    # redirect_to orders_path, notice: "order canceled!"
+    @order.update(status: "Cancelled")
+    redirect_to orders_path
+    # redirect_to orders_path, notice: "order cancelled!"
   end
 
   private
