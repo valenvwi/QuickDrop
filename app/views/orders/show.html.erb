@@ -3,7 +3,7 @@
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>"></div>
-  <div class="container-background">
+  <div class="container-background" style="text-align: center">
     <h1>Summary</h1>
       <span class="badge rounded-pill">
         <% if  @order.trip_duration.in_hours.floor <= 1 %>
