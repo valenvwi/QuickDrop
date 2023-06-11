@@ -3,7 +3,7 @@
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>"></div>
-  <div class="container">
+  <div class="container-background" style="text-align: center">
     <h1>Summary</h1>
       <span class="badge rounded-pill">
         <% if  @order.trip_duration.in_hours.floor <= 1 %>
@@ -49,7 +49,7 @@
       <p><%= @order.dropoff_address%></p>
       <h5>Drop-off time</h5>
       <p><%= @order.dropoff_at.strftime('%Y-%m-%d %H:%M') %></p>
-      <h5>Name & phone No. of receiver</h5>
+      <h5>Name & phone No. of recipient</h5>
       <p><%= @order.dropoff_name %></p>
       <p><%= @order.dropoff_contact_phone  %></p>
       <h5>Additional information</h5>

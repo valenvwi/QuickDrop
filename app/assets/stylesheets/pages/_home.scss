@@ -1,6 +1,11 @@
 // Specific CSS for your home-page
 
-#one {
+.banner {
+  text-align: center;
+  margin-top: 50%;
+}
+
+.one {
   background: linear-gradient(180deg, #FFF7E9 0%, #FF731D 100%);
   display:flex;
   justify-content: center;
@@ -17,20 +22,8 @@ body {
   margin: 0px;
 }
 
-.background-container {
-  display:grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 3fr 1fr;
-  height: 100vh;
-  padding: 0px;
-  margin: 0px;
-  background-color: white;
-}
 
-.banner {
-  text-align: center;
-  margin-top: 50%;
-}
+
 
 #new-order {
   margin-top: -60px;

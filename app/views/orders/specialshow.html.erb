@@ -1,34 +1,33 @@
-<div>
-<h2>We found a driver for your delivery</h2>
-<h3>approximate drop-off time</h3>
-<h2><%= @order.dropoff_at.strftime("%Y-%m-%d %H:%M") %> </h2>
-</div>
-<%# Status: <% if @order.status.nil? %>
-<%# Confirmed %>
-<%# <% else %>
-<%# <%= @order.status %>
-<%# <% end %>
-<div class="card-body">
-  <%= @order.driver %>
-</div>
-<button type="button" class="btn btn-secondary"  data-controller="popover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content = "0982309622" >
-  Contact Driver
-</button>
-<div class="card" style="width: 18rem;">
-  <div class="card-header">
-    Drop-off Location
+<div class="background-container">
+  <div class= "one">
+    <div class="banner">
+      <div class="circle">
+        <div class="circle-icon">
+          <i class="fa-solid fa-circle-check fa-2xl" style="color: #ff731d;"></i>
+        </div>
+      </div>
+    </div>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%= @order.dropoff_address %></li>
-  </ul>
-  <div class="card-header">
-    Price
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%= @order.price %></li>
-  </ul>
-</div>
-<div class=“d-grid”>
-  <%= button_to "Cancel Delivery", root_path , class:"btn btn-sticky btn-blue", method: :get %>
+    <div class="card">
+      <h5 class="card-header">Status: <% if @order.status.nil? %>
+        Confirmed
+      <% else %>
+        <%= @order.status %>
+      <% end %></h5>
+      <div class="card-body">
+        <h5 class="card-text">Approximate Drop-off time: <%= @order.dropoff_at.strftime("%H:%M") %></h5>
+        <p class="card-title">Drop-off address: <%= @order.dropoff_address %></p>
+        <p class="card-text">Price:  <%= @order.price %></p>
+        <hr>
+        <div class="d-flex justify-content-between mb-10">
+          <p class="card-text">Driver: Hagrid<%= @order.driver%></p>
+          <button type="button" class="btn btn-blue ">Call driver</button>
+        </div>
+        <div class="d-grid">
+          <%# <%= button_to "Cancel Delivery", root_path , class:"btn btn-outline-secondary btn-full-width", method: :get %> 
+              <%= button_to "Cancel Delivery", order_cancel_path(@order), class:"btn btn-sticky btn-blue", method: :patch %>
+        </div>
+      </div>
+    </div>
   <%= button_to "All orders", orders_path(@orders), class:"btn btn-sticky btn-blue", method: :get %>
 </div>
