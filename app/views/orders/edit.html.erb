@@ -1,4 +1,26 @@
 <div class="container">
+ <div class="steps">
+    <div class="step">
+      <div class="step-circle <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'new' %>">1</div>
+        <div class="step-text">Address</div>
+      </div>
+      <div class="step-line active"></div>
+      <div class="step">
+        <div class="step-circle <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'edit' %>">2</div>
+        <div class="step-text active">Other Information</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-circle <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'show' %>">3</div>
+        <div class="step-text">Summary</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-circle <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'specialshow' %>">4</div>
+        <div class="step-text">Submitted</div>
+      </div>
+      </div>
+    </div>
   <div>
     <h1>Details</h1>
 </div>
