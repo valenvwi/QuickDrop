@@ -8,6 +8,10 @@ class OrdersController < ApplicationController
     @orders = policy_scope(Order).where(customer_id: current_user.id).order(created_at: :desc)
   end
 
+  def driverindex
+    @orders = policy_scope(Order).where(status: "Pending").order(created_at: :desc)
+  end
+
   def new
     @order = Order.new
     authorize @order
@@ -64,6 +68,7 @@ class OrdersController < ApplicationController
 
   def accept
     @order.update(status: "Accepted")
+    @order.driver_id = current_user
     redirect_to orders_path
     # redirect_to orders_path, notice: "order accepted!"
   end

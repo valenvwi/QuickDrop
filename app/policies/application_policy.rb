@@ -12,6 +12,10 @@ class ApplicationPolicy
     false
   end
 
+  def driverindex?
+    true
+  end
+
   def show?
     false
   end

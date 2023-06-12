@@ -15,7 +15,7 @@
         <p class="card-title">Drop-off address: <%= @order.dropoff_address %></p>
         <%# <p class="card-text">Price:  <%= @order.price</p> %>
         <hr>
-        <% if @order.status == "Confirmed"%>
+        <% if @order.status == "Accepted"%>
           <div class="d-flex justify-content-between mb-10">
             <p class="card-text"><%= @order.driver_id%></p>
             <button type="button" class="btn btn-blue ">Call driver</button>
