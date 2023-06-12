@@ -15,10 +15,12 @@
         <p class="card-title">Drop-off address: <%= @order.dropoff_address %></p>
         <%# <p class="card-text">Price:  <%= @order.price</p> %>
         <hr>
-        <div class="d-flex justify-content-between mb-10">
-          <p class="card-text">Driver: Hagrid<%= @order.driver%></p>
-          <button type="button" class="btn btn-blue ">Call driver</button>
-        </div>
+        <% if @order.status == "Pending" %>
+          <div class="d-flex justify-content-between mb-10">
+            <p class="card-text">Driver: <%= @order.driver%></p>
+            <button type="button" class="btn btn-blue ">Call driver</button>
+          </div>
+        <% end %>
         <div class="d-grid">
           <%# <%= button_to "Cancel Delivery", root_path , class:"btn btn-outline-secondary btn-full-width", method: :get %>
               <%= button_to "Cancel Delivery", order_cancel_path(@order), class:"btn btn-sticky btn-blue", method: :patch %>
