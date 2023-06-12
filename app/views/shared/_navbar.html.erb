@@ -1,38 +1,23 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
-    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-      <div class="steps" role="group" aria-label="First group">
-        <div class="step <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'new' %>">1</div>
-        <%# Only display a link back to edit on the show view else display a div %>
-        <% if params[:controller] == 'orders' && params[:action] == 'show' %>
-          <%= link_to "2", edit_order_path(@order), class: 'step' %>
-        <% else %>
-          <div class="step <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'edit' %>">2</div>
-        <% end %>
-        <div class="step <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'show' %>">3</div>
-        <div class="step <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'specialshow' %>">4</div>
-      </div>
+    <div class="navbar-brand">
+      <%= image_tag "Black logo.png" %>
     </div>
-    <%# END HERE %>
     <%# Drop Down %>
-    <a href="#" class="nav-link" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <a class="nav-link" id="navbarDropdown" href="#"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <button class="navbar-toggler bi bi-box-seam" style="font-size: 2rem;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <%# <span class="navbar-toggler-icon"></span> %>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto">
-          <% if user_signed_in? %>
-            <%# Drop Down %>
-            <li class="nav-item dropdown">
-            </a>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
+          <%# Drop Down %>
+          <li class="nav-item dropdown">
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "New Order", root_path, class: "dropdown-item" %>
               <%= link_to "View My Orders", orders_path(@orders), class: "dropdown-item" %>
-              <%# <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log Out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              <%= button_to"Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
         <% else %>

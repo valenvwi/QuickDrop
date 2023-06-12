@@ -1,14 +1,14 @@
-  <%= simple_form_for @order, html: { "data-turbo-frame": false } do |f| %>
-    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-        <div class="form-inputs">
-          <%= f.input :pickup_address %>
-          <%= f.input :pickup_at, as: :time, html5: true, input_html: { min: Time.now.strftime('%Y-%m-%dT%H:%M') }%>
-          <br>
-          <hr>
-          <br>
-          <%= f.input :dropoff_address %>
-        </div>
-          <% if action_name != "edit"%>
-            <%= f.button :submit, class: "btn btn-sticky btn-blue" %>
-          <% end %>
+  <%= simple_form_for @order, html: { "data-turbo-frame": false, turbo: false } do |f| %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="form-inputs">
+    <%= f.input :pickup_address %>
+    <%= f.input :pickup_at, as: :time, html5: true, input_html: { min: Time.now.strftime('%Y-%m-%dT%H:%M') }%>
+    <br>
+    <hr>
+    <br>
+    <%= f.input :dropoff_address %>
+  </div>
+  <% if action_name != "edit"%>
+    <%= f.button :submit, class: "btn btn-blue" %>
   <% end %>
+<% end %>

@@ -18,8 +18,19 @@
         <br />
         <p class="card-text">
         <%= order.pickup_at.strftime("%Y-%m-%d %H:%M") %>
-        <br>
-        <%# <p><strong><%= order.price %></strong> CHF</p> %>
+        </p>
+        <br />
+        <strong><%= order.price %></strong> CHF</li>
+          <div>
+            <button type="button" class="btn btn-blue"
+              data-controller="popover"
+              data-bs-toggle="popover"
+              data-bs-placement="bottom"
+              data-bs-content="Pickup adress: <%= order.pickup_address %> -
+              Dropoff adress: <%= order.dropoff_address %>">
+              More details
+            </button>
+          </div>
       </div>
     </div>
   <% end %>

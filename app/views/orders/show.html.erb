@@ -3,19 +3,19 @@
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>"></div>
-  <div class="container-background">
+  <div class="container-background" style="text-align: center">
     <h1>Summary</h1>
-      <span class="badge rounded-pill">
-        <% if  @order.trip_duration.in_hours.floor <= 1 %>
-            Your order will take approximately:
-            <br>
-            <h3 class ="pill-text"><%= pluralize @order.trip_duration.in_minutes.ceil, "Minute" %></h3>
-        <% else %>
-            Your order will take approximately:
-            <br>
-            <h3 class ="pill-text"><%= pluralize @order.trip_duration.in_hours.floor, "Hour" %> <%= pluralize (@order.trip_duration.in_minutes.ceil - @order.trip_duration.in_hours.floor * 60), "Minute" %></h3>
-        <% end %>
-      </span>
+    <span class="badge rounded-pill">
+      <% if  @order.trip_duration.in_hours.floor <= 1 %>
+        Your order will take approximately:
+        <br>
+        <h3 class ="pill-text"><%= pluralize @order.trip_duration.in_minutes.ceil, "Minute" %></h3>
+      <% else %>
+        Your order will take approximately:
+        <br>
+        <h3 class ="pill-text"><%= pluralize @order.trip_duration.in_hours.floor, "Hour" %> <%= pluralize (@order.trip_duration.in_minutes.ceil - @order.trip_duration.in_hours.floor * 60), "Minute" %></h3>
+      <% end %>
+    </span>
   </div>
   <div class="card">
     <div class="card-flex">
@@ -55,7 +55,9 @@
       <h5>Additional information</h5>
       <p><%= @order.dropoff_additional_detail %></p>
     </div>
-    <%= link_to specialshow_order_path(@order) do %>
-      <input class="btn btn-sticky btn-blue" type="submit" value="Submit order:    <%= @order.calculate_price %> CHF">
-    <% end %>
-</div>
+    <div class="text-center mt-2 mb-1">
+      <%= link_to specialshow_order_path(@order) do %>
+        <%# input class="btn btn-blue w-75 p-3" type="submit" value="Request order: <%= @order.calculate_price %> CHF"%>
+      <% end %>
+    </div>
+  </div>
