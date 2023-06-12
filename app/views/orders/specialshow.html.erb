@@ -13,7 +13,7 @@
       <div class="card-body">
         <h5 class="card-text">Approximate Drop-off time: <%= @order.dropoff_at.strftime("%H:%M") %></h5>
         <p class="card-title">Drop-off address: <%= @order.dropoff_address %></p>
-        <p class="card-text">Price:  <%= @order.price %></p>
+        <%# <p class="card-text">Price:  <%= @order.price</p> %>
         <hr>
         <div class="d-flex justify-content-between mb-10">
           <p class="card-text">Driver: Hagrid<%= @order.driver%></p>
