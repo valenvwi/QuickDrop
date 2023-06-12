@@ -1,30 +1,8 @@
 <div class="container">
- <div class="steps">
-    <div class="step">
-      <div class="step-circle <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'new' %>">1</div>
-        <div class="step-text">Address</div>
-      </div>
-      <div class="step-line active"></div>
-      <div class="step">
-        <div class="step-circle <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'edit' %>">2</div>
-        <div class="step-text active">Other Information</div>
-      </div>
-      <div class="step-line"></div>
-      <div class="step">
-        <div class="step-circle <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'show' %>">3</div>
-        <div class="step-text">Summary</div>
-      </div>
-      <div class="step-line"></div>
-      <div class="step">
-        <div class="step-circle <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'specialshow' %>">4</div>
-        <div class="step-text">Submitted</div>
-      </div>
-      </div>
-    </div>
-  <div>
+  <%= render '4-steps' %>
     <h1>Details</h1>
 </div>
-<div class="card">
+<div class="card-light-orange">
   <h2>Pick-up information</h2>
   <%= simple_form_for@order, html: { "data-turbo-frame": false } do |f| %>
     <%# <%= f.error_notification %>
@@ -48,7 +26,7 @@
       <%= f.input :pickup_additional_detail, :label => "Additional information" %>
     </div>
   </div>
-  <div class="card">
+  <div class="card-light-orange">
     <h2>Drop-off information</h2>
     <div class="form-inputs">
       <% if @order.pickup_name.present? && @order.pickup_contact_phone.present? && @order.item_size.present? && @order.dropoff_name.present? && @order.dropoff_contact_phone.present? %>
