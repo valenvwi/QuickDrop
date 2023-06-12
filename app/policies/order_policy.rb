@@ -2,7 +2,7 @@ class OrderPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.where(user: user)
+      scope.where(customer_id: user.id)
     end
   end
 
@@ -35,7 +35,7 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.customer_id == user.id
   end
 
 end

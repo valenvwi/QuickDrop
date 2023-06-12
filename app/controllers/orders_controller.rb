@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 
   def index #customer
     # @order.user = current_user
-    @orders = policy_scope(Order).where(customer_id: current_user).order(created_at: :desc)
+    @orders = policy_scope(Order).where(customer_id: current_user.id).order(created_at: :desc)
   end
 
   def new
@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.customer_id = current_user
+    @order.customer_id = current_user.id
     authorize @order
     respond_to do |format|
       if @order.save
