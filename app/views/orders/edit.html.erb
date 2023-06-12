@@ -24,7 +24,7 @@
   <div>
     <h1>Details</h1>
 </div>
-<div class="card">
+<div class="card-light-orange">
   <h2>Pick-up information</h2>
   <%= simple_form_for@order, html: { "data-turbo-frame": false } do |f| %>
     <%# <%= f.error_notification %>
@@ -48,7 +48,7 @@
       <%= f.input :pickup_additional_detail, :label => "Additional information" %>
     </div>
   </div>
-  <div class="card">
+  <div class="card-light-orange">
     <h2>Drop-off information</h2>
     <div class="form-inputs">
       <% if @order.pickup_name.present? && @order.pickup_contact_phone.present? && @order.item_size.present? && @order.dropoff_name.present? && @order.dropoff_contact_phone.present? %>
