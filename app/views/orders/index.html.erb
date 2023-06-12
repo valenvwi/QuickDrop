@@ -1,7 +1,17 @@
+<div class="background-container">
+  <div class= "one">
+    <div class="banner">
+      <div class="circle">
+        <div class="circle-icon">
+          <i class="fa-solid fa-dolly fa-2xl" style="color: #ff731d;"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <h1>Orders</h1>
-<div class="cards">
+<%# <div class="cards"> %>
   <% @orders.each do |order| %>
-  <div class="container">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title"><%= order.status %></h5>
@@ -23,6 +33,5 @@
           </div>
       </div>
     </div>
-  </div>
   <% end %>
 </div>
