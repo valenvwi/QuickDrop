@@ -9,7 +9,7 @@ puts "cleaning database"
 User.destroy_all
 Order.destroy_all
 
-puts "creating users"
+puts "creating customers"
 uno = User.create!(name: "Uno", email: "uno@example.com", password: "123456")
 dobby = User.create!(name: "Dobby", email: "dobby@example.com", password: "jU7#2kL$8@6!")
 pedro = User.create!(name: "Pedro", email: "pedro@example.com", password: "jU7#2kL$8@6!")
