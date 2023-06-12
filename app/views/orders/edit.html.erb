@@ -4,7 +4,7 @@
 </div>
   <div class="card">
     <h2>Pick-up information</h2>
-    <%= simple_form_for@order, html: { "data-turbo-frame": false } do |f| %>
+    <%= simple_form_for @order, html: { "data-turbo-frame": false } do |f| %>
         <%# <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
         <div class="form-inputs">
