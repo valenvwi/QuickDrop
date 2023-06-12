@@ -11,8 +11,8 @@ dobby = User.create!(name: "Dobby", email: "dobby@example.com", password: "jU7#2
 pedro = User.create!(name: "Pedro", email: "pedro@example.com", password: "jU7#2kL$8@6!")
 
 puts "creating drivers"
-peter = Driver.create!(name: "Peter", contact_phone: 123456789)
-susan = Driver.create!(name: "Susan", contact_phone: 285351850)
+peter = User.create!(name: "Peter", contact_phone: "123456789", email: "driverpeter@example.com", password: "234567")
+susan = User.create!(name: "Susan", contact_phone: "285351850", email: "driversusan@example.com", password: "234567")
 
 puts "creating orders"
 
@@ -20,7 +20,7 @@ Order.create!(item_description: "Please take good care of it", item_size: "small
 
 Order.create!(item_description: "Full of love", item_size: "medium", pickup_name: "dobby", pickup_address: "Mythenquai 9, 8002 Zürich", pickup_longitude: 8.5367009, pickup_latitude: 47.3616995, pickup_contact_phone: "888888888", pickup_additional_detail: "Dont ring the bell", pickup_at: "2023-06-05 17:15:55", dropoff_name: "harry", dropoff_address: "Hofwiesenstrasse 370, 8050 Zürich", dropoff_longitude: 8.5447568, dropoff_latitude: 47.4112233, dropoff_contact_phone: "666666666", dropoff_additional_detail: "Please tell harry that I love him!", price: 20, distance: 2.8, user_id: dobby.id, driver_id: peter.id )
 
-Order.create!(item_size: "large", status: "Canceled", pickup_name: "Bobo", pickup_address: "Weststrasse 196, 8003 Zürich", pickup_longitude: 8.5170696, pickup_latitude: 47.3749246, pickup_contact_phone: "7023301334", pickup_additional_detail: "None", pickup_at: "2023-06-05 17:20:55", dropoff_name: "Amy", dropoff_address: "Werdinsel 2, 8049 Zürich", dropoff_longitude: 8.4893188, dropoff_latitude: 47.3991001, dropoff_contact_phone: "909010101", dropoff_additional_detail: "None", price: 0, distance: 3.4, user_id: pedro.id, driver_id: susan.id  )
+Order.create!(item_size: "large", status: "Cancelled", pickup_name: "Bobo", pickup_address: "Weststrasse 196, 8003 Zürich", pickup_longitude: 8.5170696, pickup_latitude: 47.3749246, pickup_contact_phone: "7023301334", pickup_additional_detail: "None", pickup_at: "2023-06-05 17:20:55", dropoff_name: "Amy", dropoff_address: "Werdinsel 2, 8049 Zürich", dropoff_longitude: 8.4893188, dropoff_latitude: 47.3991001, dropoff_contact_phone: "909010101", dropoff_additional_detail: "None", price: 0, distance: 3.4, user_id: pedro.id, driver_id: susan.id  )
 
 Order.create!(item_description: "Danke viel mal", item_size: "medium", pickup_name: "uno", pickup_address: "Stefano- Franscini, Platz 5, 8049 Zürich", pickup_longitude: 8.5075425, pickup_latitude: 47.4086747, pickup_contact_phone: "888888888", pickup_additional_detail: "Alles gut", pickup_at: "2023-06-05 17:40:55", dropoff_name: "cinco", dropoff_address: "Werdinsel 2, 8049 Zürich", dropoff_longitude: 8.4893188, dropoff_latitude: 47.3991001, dropoff_contact_phone: "525251111", dropoff_additional_detail: "Door is unlock.", price: 35, distance: 5.1, user_id: uno.id, driver_id: susan.id )
 
