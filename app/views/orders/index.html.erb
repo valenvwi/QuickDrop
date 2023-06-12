@@ -1,28 +1,35 @@
-<h1>Orders</h1>
-<div class="cards">
-  <% @orders.each do |order| %>
+<div class="background-container">
+  <div class= "one">
+    <div class="banner">
+      <div class="circle">
+        <div class="circle-icon">
+          <i class="fa-solid fa-circle-user" style="color: #ff731d;"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h1>My Orders</h1>
   <div class="container">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><%= order.status %></h5>
-        <br />
-        <p class="card-text">
-        <%= order.pickup_at.strftime("%Y-%m-%d %H:%M") %>
-        </p>
-        <br />
-        <strong><%= order.price %></strong> CHF</li>
-          <div>
-            <button type="button" class="btn btn-blue"
+    <% @orders.each do |order| %>
+      <div class="card border-dark mb-3">
+
+          <div class="card-header"><%= order.status %></div>
+
+          <div class="card-body text-dark">
+            <h5 class="card-title"><%= order.pickup_at.strftime("%Y-%m-%d %H:%M") %></h5>
+            <p class="card-text">Pick-up address: <%= order.pickup_address %></p>
+          </div>
+
+          <button type="button" class="btn btn-blue"
               data-controller="popover"
               data-bs-toggle="popover"
               data-bs-placement="bottom"
               data-bs-content="Pickup Address: <%= order.pickup_address %>.
               Drop-off Address: <%= order.dropoff_address %>.">
               More details
-            </button>
-          </div>
+          </button>
+
       </div>
-    </div>
+    <% end %>
   </div>
-  <% end %>
 </div>

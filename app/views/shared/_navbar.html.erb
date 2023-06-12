@@ -1,19 +1,8 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-      <div class="steps" role="group" aria-label="First group">
-        <div class="step <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'new' %>">1</div>
-        <%# Only display a link back to edit on the show view else display a div %>
-        <% if params[:controller] == 'orders' && params[:action] == 'show' %>
-          <%= link_to "2", edit_order_path(@order), class: 'step' %>
-        <% else %>
-          <div class="step <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'edit' %>">2</div>
-        <% end %>
-        <div class="step <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'show' %>">3</div>
-        <div class="step <%= 'step-active' if params[:controller] == 'orders' && params[:action] == 'specialshow' %>">4</div>
-      </div>
+    <div class="navbar-brand">
+      <%= image_tag "Black logo.png" %>
     </div>
-    <%# END HERE %>
     <%# Drop Down %>
     <a class="nav-link" id="navbarDropdown" href="#"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <button class="navbar-toggler bi bi-box-seam" style="font-size: 2rem;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
