@@ -40,7 +40,7 @@ class Order < ApplicationRecord
   end
 
   def trip_duration
-    speed = 7
+    speed = 7.0
     duration = distance / speed
     self.duration = ActiveSupport::Duration.build(duration.hours.round)
   end
