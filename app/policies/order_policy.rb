@@ -11,7 +11,7 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def new?
-    user.driver? == false
+    true
   end
 
   def driverindex?
@@ -19,15 +19,15 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def show?
-    user.driver? == false
+    true
   end
 
   def specialshow?
-    user.driver? == false
+    true
   end
 
   def create?
-    user.driver? == false
+    true
   end
 
   def accept?
