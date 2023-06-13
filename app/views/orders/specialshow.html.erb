@@ -16,19 +16,27 @@
         <p class="card-title">Drop-off address: <%= @order.dropoff_address %></p>
         <%# <p class="card-text">Price:  <%= @order.price</p> %>
         <hr>
-        <% if @order.status == "Confirmed"%>
-          <div class="d-flex justify-content-between mb-10">
-            <p class="card-text"><%= @order.driver%></p>
-            <button type="button" class="btn btn-blue"
-                data-controller="popover"
-                data-bs-toggle="popover"
-                data-bs-placement="top"
-                data-bs-content="+41762209824">
-                Call Driver
-             </button>
+        <% if @order.status == "Accepted"%>
+          <div class="container">
+            <div class="row">
+
+              <div class="col-6">
+                <p class="card-text"> Driver: <%=User.find(@order.driver_id).name%></p>
+              </div>
+
+              <div class="col-6">
+                <button type="button" class="btn btn-blue"
+                  data-controller="popover"
+                  data-bs-toggle="popover"
+                  data-bs-placement="top"
+                  data-bs-content= <%= User.find(@order.driver_id).contact_phone %> >
+                  Call Driver
+                </button>
+              </div>
+            </div>
           </div>
-         <%end%>
-         <div class="d-grid">
+        <%end%>
+        <div class="d-grid">
           <%= button_to "Cancel Delivery", order_cancel_path(@order), class:"btn btn-sticky btn-blue", method: :patch %>
         </div>
       </div>

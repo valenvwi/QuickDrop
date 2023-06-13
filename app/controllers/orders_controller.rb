@@ -72,19 +72,22 @@ class OrdersController < ApplicationController
 
   def accept
     @order.update(status: "Accepted")
-    @order.driver_id = current_user
+    @order.driver_id = current_user.id
+    @order.save!
     redirect_to order_path(@order)
     # redirect_to orders_path, notice: "order accepted!"
   end
 
   def markascompleted
     @order.update(status: "Completed")
+    @order.save!
     redirect_to orders_path
     # redirect_to orders_path, notice: "order completedd!"
   end
 
   def cancel
     @order.update(status: "Cancelled")
+    @order.save!
     redirect_to orders_path
   end
 
