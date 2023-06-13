@@ -1,38 +1,44 @@
 <div class="container">
-  <%= render '4-steps' %>
+  <% if @order.driver_id != current_user.id %>
+    <%= render '4-steps' %>
+  <% end %>
   <div id= "map"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>"></div>
   <div class="container-background" style="text-align: center">
     <h1>Summary</h1>
-    <span class="badge rounded-pill">
-      <% if  @order.trip_duration.in_hours.floor <= 1 %>
-        Your order will take approximately:
-        <br>
-        <h3 class ="pill-text"><%= pluralize @order.trip_duration.in_minutes.ceil, "Minute" %></h3>
-      <% else %>
-        Your order will take approximately:
-        <br>
-        <h3 class ="pill-text"><%= pluralize @order.trip_duration.in_hours.floor, "Hour" %> <%= pluralize (@order.trip_duration.in_minutes.ceil - @order.trip_duration.in_hours.floor * 60), "Minute" %></h3>
-      <% end %>
-    </span>
+    <% if @order.driver_id != current_user.id %>
+      <span class="badge rounded-pill">
+        <% if  @order.trip_duration.in_hours.floor <= 1 %>
+          Your order will take approximately:
+          <br>
+          <h3 class ="pill-text"><%= pluralize @order.trip_duration.in_minutes.ceil, "Minute" %></h3>
+        <% else %>
+          Your order will take approximately:
+          <br>
+          <h3 class ="pill-text"><%= pluralize @order.trip_duration.in_hours.floor, "Hour" %> <%= pluralize (@order.trip_duration.in_minutes.ceil - @order.trip_duration.in_hours.floor * 60), "Minute" %></h3>
+        <% end %>
+      </span>
+    <% end %>
   </div>
   <div class="card-light-orange">
     <div class="card-flex">
       <i class="fa-solid fa-location-dot fa-2xl" style="color: #ff731d;"></i>
       <h2>Pick-up information:</h2>
       <div>
+      <% if @order.driver_id != current_user.id %>
         <%= link_to edit_order_path(@order) do %>
           <i class="fa-solid fa-pen fa-lg" style="color: #1746a2;"></i>
         <% end %>
+      <% end %>
       </div>
     </div>
     <div class="card-summary">
       <h5>Pick-up address</h5>
-      <p><%= @order.pickup_address%></p>
+      <p><%= @order.pickup_address.titleize%></p>
       <h5>Pick-up time</h5>
-      <p><%= @order.pickup_at.strftime('%Y-%m-%dT%H:%M') %></p>
+      <p><%= @order.pickup_at.strftime('%Y-%m-%d %H:%M') %></p>
       <h5>Name & phone No. of sender</h5>
       <p><%= @order.pickup_name %></p>
       <p><%= @order.pickup_contact_phone %></p>
@@ -47,7 +53,7 @@
     </div>
     <div class="card-summary">
       <h5>Drop-off address</h5>
-      <p><%= @order.dropoff_address%></p>
+      <p><%= @order.dropoff_address.titleize%></p>
       <h5>Drop-off time</h5>
       <p><%= @order.dropoff_at.strftime('%Y-%m-%d %H:%M') %></p>
       <h5>Name & phone No. of recipient</h5>
@@ -56,10 +62,23 @@
       <h5>Additional information</h5>
       <p><%= @order.dropoff_additional_detail %></p>
     </div>
-    <div class="text-center mt-2 mb-1">
-      <%= link_to specialshow_order_path(@order) do %>
-        <%# <input class="btn btn-sticky btn-blue" type="submit" value="Submit order:    <%= @order.calculate_price %>
-        <input class="btn btn-sticky btn-blue" type="submit" value="Submit order:    ---  CHF">
-      <% end %>
-    </div>
+    <% if @order.driver_id != current_user.id %>
+      <div class="text-center mt-2 mb-1">
+        <%= link_to specialshow_order_path(@order) do %>
+          <%# <input class="btn btn-sticky btn-blue" type="submit" value="Submit order:    <%= @order.calculate_price %>
+          <input class="btn btn-blue" type="submit" value="Request order">
+        <% end %>
+      </div>
+    <% else %>
+      <div class="mt-2 m-auto">
+        <%# <%= link_to driverindex_path do %>
+          <%# <input class="btn btn-blue" value="Back to homepage">
+        <% end %>
+        <%= button_to "Back to homepage", driverindex_path, class:"btn btn-blue", method: :get %>
+      </div>
+      <div class="m-auto">
+        <%= button_to "Mark as completed", order_markascompleted_path(@order), class:"btn btn-blue", method: :patch %>
+      </div>
+    <% end %>
   </div>
+</div>

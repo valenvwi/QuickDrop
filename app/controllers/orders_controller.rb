@@ -5,12 +5,12 @@ class OrdersController < ApplicationController
 
   def index #customer
     # @order.user = current_user
-    @orders = policy_scope(Order).where(customer_id: current_user.id).order(created_at: :desc)
+    @orders = policy_scope(Order).where(customer_id: current_user.id).order(pickup_at: :desc)
   end
 
   def driverindex
     if current_user.driver?
-      @orders = policy_scope(Order).where(status: "Pending").order(created_at: :desc)
+      @orders = policy_scope(Order).where(status: "Pending").order(pickup_at: :asc)
     else
       redirect_to orders_path, alert: "No"
     end
@@ -82,7 +82,8 @@ class OrdersController < ApplicationController
     @order.update(status: "Completed")
     @order.save!
     redirect_to orders_path
-    # redirect_to orders_path, notice: "order completedd!"
+
+    # redirect_to orders_path, notice: "order completed!"
   end
 
   def cancel

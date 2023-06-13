@@ -1,4 +1,4 @@
-div class="background-container">
+<div class="background-container">
   <div class= "one">
     <div class="banner">
       <div class="circle">
@@ -9,7 +9,7 @@ div class="background-container">
     </div>
   </div>
 
-<h1 class="my-3">Active Orders</h1>
+<h1 class="my-3">Pending Orders</h1>
 <%# <div class="cards"> %>
   <% @orders.each do |order| %>
     <div class="card">
@@ -29,8 +29,8 @@ div class="background-container">
               data-controller="popover"
               data-bs-toggle="popover"
               data-bs-placement="bottom"
-              data-bs-content="Pickup adress: <%= order.pickup_address %> -
-              Dropoff adress: <%= order.dropoff_address %>">
+              data-bs-content="Pickup adress: <%= order.pickup_address.titleize %> -
+              Dropoff adress: <%= order.dropoff_address.titleize %>">
               More details
             </button>
           </div>
