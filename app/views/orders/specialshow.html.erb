@@ -2,13 +2,16 @@
   <%= render '4-steps' %>
   <div class= "one">
     <div class="banner">
-      <div class="circle">
-        <div class="circle-icon">
-          <i class="fa-solid fa-circle-check fa-2xl" style="color: #ff731d;"></i>
-        </div>
+    </div>
+  </div>
+  <div class="special-icon">
+    <div class="circle">
+      <div class="circle-icon">
+        <i class="fa-solid fa-circle-check fa-2xl" style="color: #ff731d;"></i>
       </div>
     </div>
   </div>
+  <div class="card-cover">
     <div class="card-light-orange">
       <h5 class="card-header">Status: <%= @order.status %>
       <div class="card-body">
@@ -30,16 +33,18 @@
                   data-bs-toggle="popover"
                   data-bs-placement="top"
                   data-bs-content= <%= User.find(@order.driver_id).contact_phone %> >
-                  Call Driver
-                </button>
+                    Call Driver
+                  </button>
+                </div>
               </div>
             </div>
+          <%end%>
+          <div class="d-grid">
+            <%= button_to "Cancel Order", order_cancel_path(@order), class:"btn btn-blue", method: :patch %>
           </div>
-        <%end%>
-        <div class="d-grid">
-          <%= button_to "Cancel Delivery", order_cancel_path(@order), class:"btn btn-sticky btn-blue", method: :patch %>
         </div>
       </div>
+    </div>
+    <%= button_to "All orders", orders_path(@orders), class:"btn btn-blue", method: :get %>
   </div>
-  <%= button_to "All orders", orders_path(@orders), class:"btn btn-sticky btn-blue", method: :get %>
 </div>

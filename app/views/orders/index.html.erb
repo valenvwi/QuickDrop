@@ -2,15 +2,17 @@
 <div class="background-container">
   <div class= "one">
     <div class="banner">
+    </div>
+  </div>
+  <div class="container">
+    <div class="page-icon">
       <div class="circle">
         <div class="circle-icon">
           <i class="fa-solid fa-circle-user" style="color: #ff731d;"></i>
         </div>
       </div>
     </div>
-  </div>
-  <h1>My Orders</h1>
-  <div class="container">
+    <h1>My Orders</h1>
     <% @orders.each do |order| %>
       <div class="card mb-3">
 
@@ -29,7 +31,6 @@
               Drop-off Address: <%= order.dropoff_address.titleize %>.">
               More details
           </button>
-
       </div>
     <% end %>
   </div>
