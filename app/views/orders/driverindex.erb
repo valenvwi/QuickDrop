@@ -29,8 +29,8 @@
               data-controller="popover"
               data-bs-toggle="popover"
               data-bs-placement="bottom"
-              data-bs-content="Pickup adress: <%= order.pickup_address %> -
-              Dropoff adress: <%= order.dropoff_address %>">
+              data-bs-content="Pickup adress: <%= order.pickup_address.titleize %> -
+              Dropoff adress: <%= order.dropoff_address.titleize %>">
               More details
             </button>
           </div>
