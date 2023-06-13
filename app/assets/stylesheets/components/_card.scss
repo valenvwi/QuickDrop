@@ -4,17 +4,16 @@
   margin: 20px;
 }
 
-
-
 /// card light orange ////
 
 .card-light-orange {
   background-color: #FFF7E9;
+  border: 1px solid #ff731d;
   border-radius: 15px;
   padding: 12px;
   margin: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  border: 2px solid lightgrey;
+  box-shadow: 0 0 5px rgba(0,0,0,0.25);
+
 }
 
 //// card flexbox ////
