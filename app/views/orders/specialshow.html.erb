@@ -1,4 +1,5 @@
 <div class="background-container">
+  <%= render '4-steps' %>
   <div class= "one">
     <div class="banner">
       <div class="circle">
@@ -8,22 +9,27 @@
       </div>
     </div>
   </div>
-    <div class="card">
+    <div class="card-light-orange">
       <h5 class="card-header">Status: <%= @order.status %>
       <div class="card-body">
         <h5 class="card-text">Approximate Drop-off time: <%= @order.dropoff_at.strftime("%H:%M") %></h5>
         <p class="card-title">Drop-off address: <%= @order.dropoff_address %></p>
         <%# <p class="card-text">Price:  <%= @order.price</p> %>
         <hr>
-        <% if @order.status == "Accepted"%>
+        <% if @order.status == "Confirmed"%>
           <div class="d-flex justify-content-between mb-10">
-            <p class="card-text"><%= @order.driver_id%></p>
-            <button type="button" class="btn btn-blue ">Call driver</button>
+            <p class="card-text"><%= @order.driver%></p>
+            <button type="button" class="btn btn-blue"
+                data-controller="popover"
+                data-bs-toggle="popover"
+                data-bs-placement="top"
+                data-bs-content="+41762209824">
+                Call Driver
+             </button>
           </div>
-        <%end%>
-        <div class="d-grid">
-          <%# <%= button_to "Cancel Delivery", root_path , class:"btn btn-outline-secondary btn-full-width", method: :get %>
-              <%= button_to "Cancel Delivery", order_cancel_path(@order), class:"btn btn-sticky btn-blue", method: :patch %>
+         <%end%>
+         <div class="d-grid">
+          <%= button_to "Cancel Delivery", order_cancel_path(@order), class:"btn btn-sticky btn-blue", method: :patch %>
         </div>
       </div>
   </div>
