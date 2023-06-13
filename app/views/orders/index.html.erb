@@ -15,14 +15,12 @@
     <h1>My Orders</h1>
     <% @orders.each do |order| %>
       <div class="card mb-3">
-
-          <div class="card-header"><%= order.status %></div>
-
+        <div class="card-header"><%= order.status %></div>
           <div class="card-body text-dark">
-            <h5 class="card-title"><%= order.pickup_at.strftime("%Y-%m-%d %H:%M") %></h5>
-            <p class="card-text">Pick-up address: <%= order.pickup_address.titleize %></p>
+            <h5 class="card-title">Date: <%= order.pickup_at.strftime("%Y-%m-%d") %></h5>
+            <h5 class="card-title">Time: <%= order.pickup_at.strftime("%H:%M") %></h5>
+            <p class="card-text">Price: <%= order.price %> CHF</p>
           </div>
-
           <button type="button" class="btn btn-blue"
               data-controller="popover"
               data-bs-toggle="popover"
