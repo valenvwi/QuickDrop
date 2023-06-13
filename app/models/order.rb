@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
-  belongs_to :user
-  belongs_to :driver, optional: true
+  belongs_to :customer, class_name: "User"
+  belongs_to :driver, class_name: "User", optional: true
 
   validates :pickup_address, presence: true
   validates :pickup_at, presence: true

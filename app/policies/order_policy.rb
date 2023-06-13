@@ -2,11 +2,22 @@ class OrderPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.where(user: user)
+      if user.driver?
+        scope.all
+      else
+        scope.where(customer_id: user.id)
+      end
     end
+    # def resolve
+    #   scope.where(user: user)
+    # end
   end
 
   def new?
+    true
+  end
+
+  def driverindex?
     true
   end
 
@@ -35,7 +46,6 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.customer_id == user.id
   end
-
 end
