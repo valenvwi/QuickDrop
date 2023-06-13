@@ -82,7 +82,8 @@ class OrdersController < ApplicationController
     @order.update(status: "Completed")
     @order.save!
     redirect_to orders_path
-    # redirect_to orders_path, notice: "order completedd!"
+
+    # redirect_to orders_path, notice: "order completed!"
   end
 
   def cancel

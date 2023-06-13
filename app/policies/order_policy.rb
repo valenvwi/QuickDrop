@@ -13,6 +13,9 @@ class OrderPolicy < ApplicationPolicy
     # end
   end
 
+  def index?
+  end
+
   def new?
     true
   end
