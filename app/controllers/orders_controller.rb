@@ -80,14 +80,15 @@ class OrdersController < ApplicationController
 
   def markascompleted
     @order.update(status: "Completed")
-    @order.driver_id = current_user.id
     @order.save!
-    redirect_to driverindex_path
-    # redirect_to orders_path, notice: "order completedd!"
+    redirect_to orders_path
+
+    # redirect_to orders_path, notice: "order completed!"
   end
 
   def cancel
     @order.update(status: "Cancelled")
+    @order.save!
     redirect_to orders_path
   end
 

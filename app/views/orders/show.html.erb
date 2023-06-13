@@ -70,7 +70,6 @@
         <% end %>
       </div>
     <% else %>
-    <div>
       <div class="mt-2 m-auto">
         <%# <%= link_to driverindex_path do %>
           <%# <input class="btn btn-blue" value="Back to homepage">
@@ -78,8 +77,8 @@
         <%= button_to "Back to homepage", driverindex_path, class:"btn btn-blue", method: :get %>
       </div>
       <div class="m-auto">
-      <%= button_to "Mark as completed", order_markascompleted_path(@order), class:"btn btn-blue", method: :patch %>
+        <%= button_to "Mark as completed", order_markascompleted_path(@order), class:"btn btn-blue", method: :patch %>
       </div>
-    </div>
     <% end %>
   </div>
+</div>
