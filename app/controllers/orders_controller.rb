@@ -3,9 +3,17 @@ class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show specialshow edit update ]
   before_action :set_submitted_order, only: %i[ accept markascompleted cancel]
 
-  def index
+  def index #customer
     # @order.user = current_user
-    @orders = policy_scope(Order).where(user_id: current_user).order(created_at: :desc)
+    @orders = policy_scope(Order).where(customer_id: current_user.id).order(created_at: :desc)
+  end
+
+  def driverindex
+    if current_user.driver?
+      @orders = policy_scope(Order).where(status: "Pending").order(created_at: :desc)
+    else
+      redirect_to orders_path, alert: "No"
+    end
   end
 
   def new
@@ -34,7 +42,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.user = current_user
+    @order.customer_id = current_user.id
     authorize @order
     respond_to do |format|
       if @order.save
@@ -64,18 +72,22 @@ class OrdersController < ApplicationController
 
   def accept
     @order.update(status: "Accepted")
-    redirect_to orders_path
+    @order.driver_id = current_user.id
+    @order.save!
+    redirect_to order_path(@order)
     # redirect_to orders_path, notice: "order accepted!"
   end
 
   def markascompleted
     @order.update(status: "Completed")
+    @order.save!
     redirect_to orders_path
     # redirect_to orders_path, notice: "order completedd!"
   end
 
   def cancel
     @order.update(status: "Cancelled")
+    @order.save!
     redirect_to orders_path
   end
 
