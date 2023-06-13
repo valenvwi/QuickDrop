@@ -26,6 +26,7 @@ h1 {
   font-weight: 700;
   font-size: 48px;
   text-align: center;
+  margin-top: 10px;
 }
 
 h2 {
@@ -54,4 +55,8 @@ p {
 
 .form-label {
   font-size: 16px;
+}
+
+.popover{
+  white-space: pre-line;
 }
