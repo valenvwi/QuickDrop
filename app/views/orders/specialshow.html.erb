@@ -13,7 +13,7 @@
       <h5 class="card-header">Status: <%= @order.status %>
       <div class="card-body">
         <h5 class="card-text">Approximate Drop-off time: <%= @order.dropoff_at.strftime("%H:%M") %></h5>
-        <p class="card-title">Drop-off address: <%= @order.dropoff_address %></p>
+        <p class="card-title">Drop-off address: <%= @order.dropoff_address.titleize %></p>
         <%# <p class="card-text">Price:  <%= @order.price</p> %>
         <hr>
         <% if @order.status == "Accepted"%>
