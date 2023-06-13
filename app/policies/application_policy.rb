@@ -9,15 +9,11 @@ class ApplicationPolicy
   end
 
   def index?
-    false
-  end
-
-  def driverindex?
     true
   end
 
   def show?
-    false
+    true
   end
 
   def create?

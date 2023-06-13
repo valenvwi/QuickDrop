@@ -8,6 +8,9 @@ class OrderPolicy < ApplicationPolicy
         scope.where(customer_id: user.id)
       end
     end
+    # def resolve
+    #   scope.where(user: user)
+    # end
   end
 
   def new?
@@ -15,7 +18,7 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def driverindex?
-    user.driver?
+    true
   end
 
   def show?
@@ -45,5 +48,4 @@ class OrderPolicy < ApplicationPolicy
   def update?
     record.customer_id == user.id
   end
-
 end
