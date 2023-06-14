@@ -1,17 +1,18 @@
 
 <div class="background-container">
-  <div class= "one">
-    <div class="banner">
+  <div class= "one" id="img-my-orders">
+  </div>
+    <%# <div class="banner">
     </div>
   </div>
   <div class="container">
-    <div class="page-icon">
+    <%# <div class="page-icon">
       <div class="circle">
         <div class="circle-icon">
           <i class="fa-solid fa-circle-user" style="color: #ff731d;"></i>
         </div>
       </div>
-    </div>
+    </div> %>
     <h1>My Orders</h1>
     <% @orders.each do |order| %>
       <div class="card mb-3">
@@ -33,4 +34,3 @@
     <% end %>
   </div>
 </div>
-

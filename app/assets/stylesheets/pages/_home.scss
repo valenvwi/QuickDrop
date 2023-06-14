@@ -8,18 +8,11 @@
   // position: relative;
 }
 
-.one {
-  background: linear-gradient(180deg, #FFF7E9 0%, #FF731D 100%);
-  width: 100%;
-  display:flex;
-  justify-content: center;
-  padding: 50px;
-  margin-bottom: 40px;
-}
 
-#one {
-  background-image: url('bg3.jpg');
+#img-homepage {
+  background-image: url("bg-homepage.png");
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
   width: 100%;
   height: 36vh;
