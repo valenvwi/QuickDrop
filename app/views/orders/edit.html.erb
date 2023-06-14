@@ -3,7 +3,7 @@
   <h1>Details</h1>
 </div>
 <div class="card-light-orange">
-  <h2>Pick-up information</h2>
+  <h2> <i class="fa-solid fa-location-dot fa-2xl pin" style="color: #ff731d;"></i>   Pick-up information</h2>
   <%= simple_form_for@order, html: { "data-turbo-frame": false } do |f| %>
     <%# <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -26,7 +26,7 @@
     </div>
   </div>
   <div class="card-light-orange">
-    <h2>Drop-off information</h2>
+    <h2><i class="fa-solid fa-location-dot fa-2xl pin" style="color: #ff731d;" ></i>   Drop-off information</h2>
     <div class="form-inputs">
       <% if @order.pickup_name.present? && @order.pickup_contact_phone.present? && @order.item_size.present? && @order.dropoff_name.present? && @order.dropoff_contact_phone.present? %>
         <%= f.input :dropoff_address, :label => "Drop-off address"%>
