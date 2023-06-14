@@ -23,7 +23,6 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.references :customer, null: false, foreign_key: { to_table: :users }
       t.references :driver, foreign_key: { to_table: :users }
 
-
       t.timestamps
     end
   end
