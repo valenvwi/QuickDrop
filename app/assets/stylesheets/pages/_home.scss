@@ -1,13 +1,7 @@
 // Specific CSS for your home-page
 .homepage-banner {
-  text-align: top;
+  margin-top: 20px;
 }
-.banner {
-  text-align: top;
-  margin: 50px;
-  // position: relative;
-}
-
 
 #img-homepage {
   background-image: url("bg-homepage.png");
@@ -19,30 +13,16 @@
   display:flex;
   justify-content: center;
   padding-top: 88px;
-  // padding-top: 120px;
   margin-bottom: 40px;
 }
 
 
 .homepage-h1 {
- font-size: 20px;
- text-align: center;
+ font-size: 30px;
+  margin-top: 20px;
+  text-align:right;
+  margin-right: 20px;
 }
-
-.word-box {
-  // position: absolute;
-  // margin-top: 50%;
-  margin-bottom: 200px;
-  right: -180px;
-  text-align: center;
-  padding: 3px 19px;
-
-  justify-content: end;
-  background: rgba(251, 251, 251, 0.5);
-  display: flex;
-}
-
-
 
 
 
@@ -50,8 +30,6 @@ body {
   padding: 0px;
   margin: 0px;
 }
-
-
 
 
 #new-order {
