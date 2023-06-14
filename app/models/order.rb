@@ -30,7 +30,7 @@ class Order < ApplicationRecord
   end
 
   def calculate_price
-    self.price = (distance * 5.0).round(2)
+    self.price = (calculate_distance * 5.0).round(2)
   end
 
   def calculate_distance
@@ -41,12 +41,12 @@ class Order < ApplicationRecord
 
   def trip_duration
     speed = 7.0
-    duration = distance / speed
+    duration = calculate_distance / speed
     self.duration = ActiveSupport::Duration.build(duration.hours.round)
   end
 
   def dropoff_time
-    self.dropoff_at = (pickup_at + duration)
+    self.dropoff_at = (pickup_at + trip_duration)
   end
 
   private
