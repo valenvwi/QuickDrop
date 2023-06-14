@@ -74,7 +74,7 @@
         <%# <%= link_to driverindex_path do %>
           <%# <input class="btn btn-blue" value="Back to homepage">
         <% end %>
-        <%= button_to "Back to homepage", driverindex_path, class:"btn btn-blue", method: :get %>
+        <%= button_to "Back to homepage", root_path, class:"btn btn-blue", method: :get %>
       </div>
       <div class="m-auto">
         <%= button_to "Mark as completed", order_markascompleted_path(@order), class:"btn btn-blue", method: :patch %>

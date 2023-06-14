@@ -81,7 +81,7 @@ class OrdersController < ApplicationController
   def markascompleted
     @order.update(status: "Completed")
     @order.save!
-    redirect_to orders_path
+    redirect_to driverindex_path
 
     # redirect_to orders_path, notice: "order completed!"
   end
