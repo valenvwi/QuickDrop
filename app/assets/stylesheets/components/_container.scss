@@ -27,3 +27,25 @@
   display: flex;
   justify-content: space-between;
 }
+
+
+///// container one /////
+
+
+.one {
+
+  // background: linear-gradient(180deg, #FFF7E9 0%, #FF731D 100%);
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  padding: 50px;
+  margin-bottom: 40px;
+}
+
+//// banner ///
+
+.banner {
+  text-align: top;
+  margin: 50px;
+  // position: relative;
+}
