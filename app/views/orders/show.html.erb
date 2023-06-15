@@ -40,7 +40,7 @@
       <h5>Pick-up time</h5>
       <p><%= @order.pickup_at.strftime('%Y-%m-%d %H:%M') %></p>
       <h5>Name & phone No. of sender</h5>
-      <p><%= @order.pickup_name %></p>
+      <p><%= @order.pickup_name.titleize %></p>
       <p><%= @order.pickup_contact_phone %></p>
       <h5>Additional information</h5>
       <p><%= @order.pickup_additional_detail %></p>
@@ -57,7 +57,7 @@
       <h5>Drop-off time</h5>
       <p><%= @order.dropoff_at.strftime('%Y-%m-%d %H:%M') %></p>
       <h5>Name & phone No. of recipient</h5>
-      <p><%= @order.dropoff_name %></p>
+      <p><%= @order.dropoff_name.titleize %></p>
       <p><%= @order.dropoff_contact_phone  %></p>
       <h5>Additional information</h5>
       <p><%= @order.dropoff_additional_detail %></p>
@@ -65,8 +65,8 @@
     <% if @order.driver_id != current_user.id %>
       <div class="text-center mt-2 mb-1">
         <%= link_to specialshow_order_path(@order) do %>
-          <input class="btn btn-sticky btn-blue" type="submit" value="Submit order:    <%= @order.price %>">
-          <input class="btn btn-blue" type="submit" value="Request order">
+          <input class="btn btn-blue" type="submit" value="Submit order:    <%= @order.price %> CHF">
+          <%# <input class="btn btn-blue" type="submit" value="Request order"> %>
         <% end %>
       </div>
     <% else %>
