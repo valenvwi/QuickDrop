@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 
   def index #customer
     # @order.user = current_user
-    @orders = policy_scope(Order).where(customer_id: current_user.id).order(pickup_at: :desc)
+    @orders = policy_scope(Order).where(customer_id: current_user.id).order(created_at: :desc)
   end
 
   def driverindex
@@ -61,13 +61,19 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
+        @order.calculate_distance
+        @order.calculate_price
+        @order.trip_duration
+        @order.dropoff_time
+        @order.save!
         format.html { redirect_to order_path(@order) }
-        format.json { render :show}
+        format.json { render :show }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   def accept
@@ -106,8 +112,8 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:item_description, :item_size, :status, :pickup_name, :pickup_address, :pickup_contact_phone, :pickup_additional_detail, :pickup_at, :dropoff_name, :dropoff_address, :dropoff_contact_phone, :dropoff_additional_detail, :dropoff_at )
+    params.require(:order).permit(:item_description, :item_size, :status, :pickup_name, :pickup_address, :pickup_contact_phone, :pickup_additional_detail, :pickup_at, :dropoff_name, :dropoff_address, :dropoff_contact_phone, :dropoff_additional_detail, :dropoff_at, :price,
+    :distance, :duration)
   end
-
 
 end
