@@ -40,7 +40,9 @@
             </div>
           <%end%>
           <div class="d-grid">
+            <% if @order.status == "Pending"  %>
             <%= button_to "Cancel Order", order_cancel_path(@order), class:"btn btn-blue", method: :patch %>
+            <% end %>
           </div>
         </div>
       </div>
